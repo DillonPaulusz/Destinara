@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Destinara | Activity</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            let searchParams = new URLSearchParams(window.location.search);
+            let id = searchParams.get('id');
+
+
+            $.ajax({
+                type: 'GET',
+                url: '../Json/ActivityInfo.json',
+                data: { get_param: 'value' },
+                dataType: 'json',
+                success: function (data) {
+                    $.each(data, function(index, element) {
+                        if(element.id == id){
+                            $('#activity-pg-img').hide().attr('src', element.imageurl).show();
+                            $('#activity-pg-info').text(element.Description);
+                            $('#activity-pg-name').text(element.name);
+                            $.each(element.locations, function(index, element) {
+                                $('.activity-locations').append($('<li>', {
+                                    text: element.valueOf()
+                                }));
+                            });
+                        }
+                    });
+                }
+            });
+
+
+        });
+    </script>
+</head>
+<body>
+<div data-role="page">
+    <div data-role="header"  class="head" data-position="fixed">
+        <div   class="head" style="background-color: #FF8F77">
+            <div class="back">
+                <a onclick="history.back()"><img src="../assets/images/icons/back.png"></a>
+            </div>
+
+            <div class="head-text">
+                  Activities
+            </div>
+        </div>
+    </div><!-- /header -->
+
+<div class="activity-info">
+    <img src="#" id="activity-pg-img">
+    <span id="activity-pg-name" class="heading-text"></span>
+    <p id="activity-pg-info"></p>
+    <ul class="activity-locations">
+    </ul>
+
+</div>
+
+
+
+
+
+
+    <div data-role="footer" data-position="fixed" class="nav-bar" data-tap-toggle="false">
+        <div data-role="navbar" class="nav-bar">
+            <ul>
+                <li><a href="Home.html" id="homeNav" data-icon="custom" data-ajax="false"   ></a></li>
+                <li><a href="Treasure-hunt.html" id="treasurehuntNav" data-icon="custom" data-ajax="false"   ></a></li>
+                <li><a href="Leaderboard.html" id="leaderboardNav" data-icon="custom" data-ajax="false"   ></a></li>
+                <li><a href="Profile.html" id="profileNav" data-icon="custom" data-ajax="false"   ></a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+</html>

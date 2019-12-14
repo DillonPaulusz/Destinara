@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Destinara | Leaderboard</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" rel="stylesheet"/>
+    <link href="../assets/css/style.css" rel="stylesheet"/>
+    <link href="../assets/css/jquery-ui.css" rel="stylesheet"/>
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <script>
+
+        $.ajax({
+            type: 'GET',
+            url: '../Json/leaderboard.json',
+            data: {get_param: 'value'},
+            dataType: 'json',
+            success: function (data) {
+
+                var sorted = data.sort(function (a, b) {
+                    if (a.points > b.points) {
+                        return -1;
+                    }
+                    if (a.points < b.points) {
+                        return 1;
+                    }
+
+                    return 0;
+                });
+
+                $.each(sorted, function (index, element) {
+
+                    $('.leader-board').append("<div class='leader-board-item'><div class='leader-board-img'>" +
+                        "<img src='../assets/images/destinations/madakalapuwa.png'></div><div class='destination-list-text'>" + element.name + "<div class='leaderboard-pt'><span>" + element.points + "pts</span></div></div></div>");
+
+                    if(element.name == "Dillon paulusz"){
+                        $('.lb-profile-text').append("<p>Points : " + element.points +"</p>");
+                    }
+
+                    $( "#progressbar" ).progressbar({
+                        value: element.points
+                    });
+
+                });
+            }
+        });
+
+
+    </script>
+</head>
+<body>
+<div data-role="page" id="leaderboard-page">
+    <div data-position="fixed" data-role="header">
+        <div style="background-color: #FF8F77">
+            <div class="head-logo">
+                <img src="../assets/images/header-logo.png">
+            </div>
+        </div>
+    </div><!-- /header -->
+
+    <div class="profile-header">
+
+
+        <div class="profile" style="height: 150px;">
+            <div id="progressbar" style="margin-bottom: 20px"></div>
+            <div style="height: 85px;text-align: center;margin-top: 20px">
+                <img class="lb-profile-pic" src="../assets/images/profile/profile-pic.jpg">
+                <div class="lb-profile-text">
+
+                    <p class="lb-profile-name">Dillon Paulusz</p>
+
+                </div>
+            </div>
+            <hr>
+            <div class="heading-text" >
+                    Rankings
+            </div>
+        </div>
+
+    </div>
+
+    <div class="leader-board" style="margin-top: 200px">
+    </div>
+
+    <div class="nav-bar" data-position="fixed" data-role="footer" data-tap-toggle="false">
+        <div class="nav-bar" data-role="navbar">
+            <ul>
+                <li><a data-ajax="false" data-icon="custom" href="Home.html" id="homeNav"></a></li>
+                <li><a data-ajax="false" data-icon="custom" href="Treasure-hunt.html" id="treasurehuntNav"></a></li>
+                <li><a class="ui-btn-active" data-ajax="false" data-icon="custom" href="Leaderboard.html"
+                       id="leaderboardNav"></a></li>
+                <li><a data-ajax="false" data-icon="custom" href="Profile.html" id="profileNav"></a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+</html>

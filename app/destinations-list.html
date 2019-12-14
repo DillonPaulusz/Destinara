@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Destinara | Destinations</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"/>
+    <link rel="stylesheet" href="../assets/css/style.css"/>
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+</head>
+<body>
+<div data-role="page">
+    <div data-role="header"  class="head" data-position="fixed" style="position: fixed">
+        <div   class="head" style="background-color: #FF8F77">
+            <div class="back">
+                <a onclick="history.back()"><img src="../assets/images/icons/back.png"></a>
+            </div>
+
+            <div class="head-text">
+                Destinations
+            </div>
+        </div>
+    </div><!-- /header -->
+
+
+
+    <div class="recommended">
+        <form class="ui-filterable">
+            <input id="filterBasic-input" data-type="search">
+        </form>
+        <br>
+        <div data-role="listview" data-filter="true" data-input="#filterBasic-input">
+            <div class="recommended-loc">
+                <div class="recommended-loc-img">
+                    <img src="../assets/images/destinations/badulla.png">
+                </div>
+                <div class="recommended-loc-text">
+                    <img src="../assets/images/Rating_ca.png">
+                    <span>Badulla</span>
+                    <p>Badulla is the main city of Uva Province situated in the lower central hills of Sri Lanka. It is
+                        the
+                        capital city of Uva Province and the Badulla District.</p>
+                </div>
+            </div>
+            <div class="recommended-loc">
+                <div class="recommended-loc-img">
+                    <img src="../assets/images/destinations/nanu-oya.png">
+                </div>
+                <div class="recommended-loc-text">
+                    <img src="../assets/images/Rating_ca.png">
+                    <span>Nanu oya</span>
+                    <p>Nanu Oya is a village in Sri Lanka, named after the Nanu Oya river. It is located within Nuwara
+                        Eliya District in the Central Province and is situated approximately 8 km away from Nuwara
+                        Eliya.</p>
+                </div>
+            </div>
+
+            <div class="recommended-loc">
+                <div class="recommended-loc-img">
+                    <img src="../assets/images/destinations/madakalapuwa.png">
+                </div>
+                <div class="recommended-loc-text">
+                    <img src="../assets/images/Rating_ca.png">
+                    <span>Madakalapuwa</span>
+                    <p>Batticaloa is a major city in the Eastern Province, Sri Lanka, and its former capital. It is the
+                        administrative capital of the Batticaloa District. The city is the seat of the Eastern
+                        University of Sri Lanka.</p>
+                </div>
+
+            </div>
+
+            <div class="recommended-loc">
+                <div class="recommended-loc-img">
+                    <img src="../assets/images/destinations/Mirissa.png">
+                </div>
+                <div class="recommended-loc-text">
+                    <img src="../assets/images/Rating_ca.png">
+                    <span>Mirissa</span>
+                    <p>Mirissa is a small town on the south coast of Sri Lanka, located in the Matara District of the
+                        Southern Province. It is approximately 150 kilometres south of Colombo.</p>
+                </div>
+            </div>
+
+            <div class="recommended-loc">
+                <div class="recommended-loc-img">
+                    <img src="../assets/images/destinations/kandy-tooth-relic.png">
+                </div>
+                <div class="recommended-loc-text">
+                    <img src="../assets/images/Rating_ca.png">
+                    <span>Tooth relic</span>
+                    <p>Sri Dalada Maligawa or the Temple of the Sacred Tooth Relic is a Buddhist temple in the city of
+                        Kandy, Sri Lanka. It is located in the royal palace complex of the former Kingdom of Kandy.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div data-role="footer" data-position="fixed" class="nav-bar" data-tap-toggle="false" style="position: fixed;">
+        <div data-role="navbar" class="nav-bar">
+            <ul>
+                <li><a href="Home.html" class="ui-btn-active" id="homeNav" data-icon="custom" data-ajax="false"
+                       data-transition="slide"></a></li>
+                <li><a href="Treasure-hunt.html" id="treasurehuntNav" data-icon="custom" data-ajax="false"></a></li>
+                <li><a href="Leaderboard.html" id="leaderboardNav" data-icon="custom" data-ajax="false"></a></li>
+                <li><a href="Profile.html" id="profileNav" data-icon="custom" data-ajax="false"></a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script src="../assets/js/script.js"></script>
+<script src="../assets/js/jquery.jcarousel.min.js"></script>
+
+</body>
+</html>
+

@@ -1,0 +1,68 @@
+[
+  {
+    "id" : "1",
+    "name": "Rock Climbing",
+    "Description": "The large craggy rocks and mountains are immovable. They stand tall through time, only changing a little with the weather and ages, and represent a challenge to mankind. Scaling the heights and climbing them has proved a thrill immeasurable, as it allows a climber to establish his dominance over the elements. Rock climbing is an established extreme sport that involves climbing, upward, downward or across, natural rock formations or artificial rock walls. ",
+    "imageurl": "../assets/images/activity-info/climbing.jpg",
+    "locations": [
+      "Nuwala eliya",
+      "Adams peak",
+      "knuckles"
+    ]
+  },
+  {
+    "id" : "2",
+    "name": "Tropical",
+    "Description": "Sri Lanka is a tropical island found in the deep blue waters of the Indian Ocean and the Bay of Bengal. The country is endowed with over a thousand miles of beautiful golden beaches that are fringed with coconut palms making it the ideal destination for a beach holiday.",
+    "imageurl": "../assets/images/activity-info/tropical.jpg",
+    "locations": [
+      "Mirissa",
+      "Galle",
+      "Trincomalee"
+    ]
+  },
+  {
+    "id" : "3",
+    "name": "Hiking",
+    "Description": "Sri Lanka is a very special hiking destination. There are trails for all sorts of experience, from easy walks to more intense treks. Sri Lanka also has over 400 waterfalls, a visit to which is included in plenty of hikes.",
+    "imageurl": "../assets/images/activity-info/hiking.jpg",
+    "locations": [
+      "Ella",
+      "Kandy",
+      "Haputtale"
+    ]
+  },
+  {
+    "id" : "4",
+    "name": "Camping",
+    "Description": "Camping in Sri Lanka can be the best experience you can have while being close to nature. Amidst the scenic jungle location you have a chance to go for rainforest camping which will allow you to get deeply absorbed in the sound of the water being closer to the fall.",
+    "imageurl": "../assets/images/activity-info/camping.jpg",
+    "locations": [
+      "ella",
+      "yaala",
+      ""
+    ]
+  },
+  {
+    "id" : "5",
+    "name": "Scooba diving",
+    "Description": "Sri Lanka has plenty of scuba diving and snorkelling spots. If you’ve never done any diving, there are PADI diving schools that can help you master the art of scuba diving. For more experienced divers, equipment is available for rent at all the diving schools. ",
+    "imageurl": "../assets/images/activity-info/scubadiving.jpg",
+    "locations": [
+      "pasikuda",
+      "Trincomalle",
+      "unawatuna"
+    ]
+  },
+  {
+    "id" : "6",
+    "name": "Cycling",
+    "Description": "Sri Lanka could have been designed by a cyclist. It’s compact – smaller than Ireland – and packs a lot into its petite teardrop footprint. Pedal between rice paddies, up into the central highlands and past ancient monuments and beaming people. Most cycling holidays are in small groups with a guide and vehicle support, so your bags are transported in the van and you can be, too, if you’re overheated or hill-weary",
+    "imageurl": "../assets/images/activity-info/cycling.jpg",
+    "locations": [
+      "Nuwara eliya",
+      "Pollonaruwa",
+      "Sigiriya"
+    ]
+  }
+]
