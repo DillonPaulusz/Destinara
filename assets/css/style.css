@@ -709,3 +709,24 @@ height: 30px
     font-size: 18px;
     font-weight: bold;
 }
+
+.game-rule img {
+    height: 50px;
+    width: 50px;
+    margin-right: 15px;
+    float: left;
+}
+
+.game-rule{
+    text-align: center;
+    height: 100px;
+}
+
+.game-rule div{
+    font-size: 14px;
+    font-family: Source Sans Pro;
+    font-style: italic;
+    text-align: justify;
+    color: #777777;
+    text-justify: inter-word;
+}
