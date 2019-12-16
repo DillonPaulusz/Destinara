@@ -1,0 +1,69 @@
+[
+  {
+    "destination_id" : 1,
+    "name" : "Madakalapuwa",
+    "description" : "Batticaloa is a major city in the Eastern Province, Sri Lanka, and its former capital. It is the administrative capital of the Batticaloa District. The city is the seat of the Eastern University of Sri Lanka and is a major commercial city",
+    "activities": [
+     2,
+     5
+    ],
+    "imageurl" : "../assets/images/destination-info/madakalapuwa.jpg"
+  },  {
+  "destination_id" : 2,
+  "name" : "Badulla",
+  "description" : "Badulla is the main city of Uva Province situated in the lower central hills of Sri Lanka. It is the capital city of Uva Province and the Badulla District.",
+  "activities": [
+    3,
+    6
+  ],
+  "imageurl" : "../assets/images/destination-info/badulla.jpg"
+},  {
+  "destination_id" : 3,
+  "name" : "Nanu oya",
+  "description" : "Nanu Oya is a village in Sri Lanka, named after the Nanu Oya river. It is located within Nuwara Eliya District in the Central Province and is situated approximately 8 km away from Nuwara Eliya.",
+  "activities": [
+    3,
+    4
+  ] ,
+  "imageurl" : "../assets/images/destination-info/nanu-oya.jpg"
+},  {
+  "destination_id" : 4,
+  "name" : "Mirissa beach",
+  "description" : "Mirissa is a small town on the south coast of Sri Lanka, located in the Matara District of the Southern Province. It is approximately 150 kilometres south of Colombo ",
+  "activities": [
+    2,
+    5
+  ],
+  "imageurl" : "../assets/images/destination-info/mirssa.jpg"
+},  {
+  "destination_id" : 5,
+  "name" : "Nine arches brdestination_idge ella",
+  "description" : "The Nine Arch Brdestination_idge also called the Brdestination_idge in the Sky, is a viaduct brdestination_idge in Sri Lanka. It is one of the best examples of colonial-era railway construction in the country. The construction of the brdestination_idge is generally attributed to a local Ceylonese builder, P. K. Appuhami, in consultation with British engineers. ",
+  "activities": [
+    1,
+    4,
+    3
+  ],
+  "imageurl" : "../assets/images/destination-info/ella.jpg"
+},  {
+  "destination_id" : 6,
+  "name" : "Tooth temple kandy",
+  "description" : "Sri Dalada Maligawa or the Temple of the Sacred Tooth Relic is a Buddhist temple in the city of Kandy, Sri Lanka. It is located in the royal palace complex of the former Kingdom of Kandy, which houses the relic of the tooth of the Buddha.",
+  "activities": [
+    6,
+    3
+  ],
+  "imageurl" : "../assets/images/destination-info/toothtemple.jpg"
+} ,
+  {
+    "destination_id" : 7,
+    "name" : "Galle fort",
+    "description" : "The Galle Fort, or Dutch Fort as it is also known, is a fortification first built by the Portugese on the Southwestern coast of Sri Lanka. The initial fortifications, which were built in the late 16th century, were quite basic. However the fort underwent extensive modifications in the 17th century by the Dutch",
+    "activities": [
+      2,
+      5,
+      6
+    ],
+    "imageurl" : "../assets/images/destination-info/gallefort.jpg"
+  }
+]

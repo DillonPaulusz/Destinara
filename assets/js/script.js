@@ -51,8 +51,11 @@
 function myFunction(id) {
     window.location.href="Activity-info.html?id=" + id;
     console.log(id);
-
-
 }
 
+
+function DestinationPage(id) {
+    window.location.href="Destination-page.html?id=" + id;
+    console.log(id);
+}
 

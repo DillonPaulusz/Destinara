@@ -1,10 +1,106 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Destinara | Destination info</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+    <script>
+        let searchParams = new URLSearchParams(window.location.search);
+        let id = searchParams.get('id');
+
+        var activies = [{}];
+
+        $.ajax({
+            type: 'GET',
+            async :false,
+            url: '../Json/ActivityInfo.json',
+            data: { get_param: 'value' },
+            dataType: 'json',
+            success: function (data) {
+                $.each(data, function(index, element) {
+                    activies.push(element)
+                });
+            }
+        });
+
+
+        $.ajax({
+            type: 'GET',
+            url: '../Json/destinationInfo.json',
+            data: { get_param: 'value' },
+            dataType: 'json',
+            success: function (data) {
+
+                $.each(data, function(index, element) {
+                    if(element.destination_id == id){
+                        $('.destination-img').hide().attr('src', element.imageurl).show();
+                        $('.destination-desc').text(element.description);
+                        $('.destination-name').text(element.name);
+                        $.each(element.activities, function(index, element) {
+                            $.each(activies, function(i, item) {
+                                if(item.activity == element){
+                                    console.log(item.activity)
+                                    $('.destination-activies').append("<div class='des-cont'><div class='definition-act-cont' onclick='myFunction("+ item.activity +")'><img src="+item.imageurl+" alt='Avatar' class='definition-act-img'>\n" +
+                                        "<div class='definition-act-over'><div class='definition-act-text'>"+item.name +"</div></div></div></div>")
+                                }
+                            });
+                        });
+                    }
+                });
+            }
+        });
+    </script>
 </head>
 <body>
+<div data-role="page">
+    <div data-role="header"  class="head" data-position="fixed" style="position: fixed">
+        <div   class="head" style="background-color: #FF8F77">
+            <div class="back">
+                <a onclick="history.back()"><img src="../assets/images/icons/back.png"></a>
+            </div>
 
+            <div class="head-text">
+                Destination info
+            </div>
+        </div>
+    </div><!-- /header -->
+
+    <div style="padding: 15px">
+        <div class="destination-info">
+            <img class="destination-img">
+            <div class="destination-name"></div>
+            <div class="destination-desc"></div>
+
+            <div class="destination-activies">
+                <h1>Activities</h1>
+            </div>
+
+        </div>
+
+
+    </div>
+
+    <div data-role="footer" data-position="fixed" class="nav-bar" data-tap-toggle="false">
+        <div data-role="navbar" class="nav-bar">
+            <ul>
+                <li><a href="Home.html" id="homeNav" data-icon="custom" data-ajax="false"></a></li>
+                <li><a href="Treasure-hunt.html" id="treasurehuntNav" data-icon="custom" data-ajax="false"   ></a></li>
+                <li><a href="Leaderboard.html" id="leaderboardNav" data-icon="custom" data-ajax="false"   ></a></li>
+                <li><a href="Profile.html" id="profileNav" data-icon="custom" data-ajax="false"   ></a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<script>
+    function myFunction(id) {
+        window.location.href="Activity-info.html?id=" + id;
+        console.log(id);
+    }
+
+</script>
 </body>
 </html>
