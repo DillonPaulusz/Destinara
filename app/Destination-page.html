@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="../assets/css/style.css" />
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/js/fontawesome.min.js"></script>
+    <link rel="stylesheet" href="../font-aw/css/all.css" />
     <script>
         let searchParams = new URLSearchParams(window.location.search);
         let id = searchParams.get('id');
@@ -39,7 +40,7 @@
                     if(element.destination_id == id){
                         $('.destination-img').hide().attr('src', element.imageurl).show();
                         $('.destination-desc').text(element.description);
-                        $('.destination-name').text(element.name);
+                        $('.destination-name').append(element.name + " <i class='far fa-heart' style='float: right'></i>");
                         $.each(element.activities, function(index, element) {
                             $.each(activies, function(i, item) {
                                 if(item.activity == element){
@@ -73,7 +74,8 @@
         <div class="destination-info">
             <img class="destination-img">
             <div class="destination-name"></div>
-            <div class="destination-desc"></div>
+
+            <div class="destination-desc" style="padding: 5px"></div>
 
             <div class="destination-activies">
                 <h1>Activities</h1>
