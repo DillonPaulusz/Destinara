@@ -7,6 +7,12 @@
     <link href="../assets/css/style.css" rel="stylesheet"/>
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-database.js"></script>
+    <script src="../assets/js/firebaseInitialise.js"></script>
 </head>
 <body>
 <div data-role="page">
@@ -120,65 +126,12 @@
             </div>
             <div id="two"  style="margin-top: 200px">
                 <div style="padding: 10px">
-                    <a class="button-def ui-shadow" href="#" style="margin-bottom: 15px"> Email list</a>
-                    <div class="destination-list">
-                        <div class="destination-list">
-                            <div class="destination-list-item">
-                                <div class="destination-list-img">
-                                    <img src="../assets/images/destinations/madakalapuwa.png">
-                                </div>
-                                <div class="destination-list-text">
-                                    <img src="../assets/images/Rating_ca.png">
-                                    <span>Madakalapuwa</span>
-                                </div>
-                            </div>
-                            <div class="destination-list-item">
-                                <div class="destination-list-img">
-                                    <img src="../assets/images/destinations/madakalapuwa.png">
-                                </div>
-                                <div class="destination-list-text">
-                                    <img src="../assets/images/Rating_ca.png">
-                                    <span>Madakalapuwa</span>
-                                </div>
-                            </div>
-                            <div class="destination-list-item">
-                                <div class="destination-list-img">
-                                    <img src="../assets/images/destinations/madakalapuwa.png">
-                                </div>
-                                <div class="destination-list-text">
-                                    <img src="../assets/images/Rating_ca.png">
-                                    <span>Madakalapuwa</span>
-                                </div>
-                            </div>
-                            <div class="destination-list-item">
-                                <div class="destination-list-img">
-                                    <img src="../assets/images/destinations/madakalapuwa.png">
-                                </div>
-                                <div class="destination-list-text">
-                                    <img src="../assets/images/Rating_ca.png">
-                                    <span>Madakalapuwa</span>
-                                </div>
-                            </div>
-                            <div class="destination-list-item">
-                                <div class="destination-list-img">
-                                    <img src="../assets/images/destinations/madakalapuwa.png">
-                                </div>
-                                <div class="destination-list-text">
-                                    <img src="../assets/images/Rating_ca.png">
-                                    <span>Madakalapuwa</span>
-                                </div>
-                            </div>
-                            <div class="destination-list-item">
-                                <div class="destination-list-img">
-                                    <img src="../assets/images/destinations/madakalapuwa.png">
-                                </div>
-                                <div class="destination-list-text">
-                                    <img src="../assets/images/Rating_ca.png">
-                                    <span>Madakalapuwa</span>
-                                </div>
-                            </div>
+                    <a class="button-def ui-shadow" id="emailListButton" href="#" style="margin-bottom: 15px"> Email list</a>
+<!--                    <div class="destination-list">-->
+                        <div class="destination-list-fav">
+
                         </div>
-                    </div>
+<!--                    </div>-->
                 </div>
 
             </div>
@@ -198,4 +151,75 @@
     </div>
 </div>
 </body>
+<script>
+    $(document).ready(function(){
+        let favData = [];
+        let favDataHardCoded = [
+            {
+                "destinationImg": "../assets/images/destinations/madakalapuwa.png",
+                "rating": "4.5",
+                "location": "Kandy"
+            },
+            {
+                "destinationImg": "../assets/images/destinations/madakalapuwa.png",
+                "rating": "3",
+                "location": "NuwaraEliya"
+            },
+            {
+                "destinationImg": "../assets/images/destinations/madakalapuwa.png",
+                "rating": "4.5",
+                "location": "Madakalapuwa"
+            },
+            {
+                "destinationImg": "../assets/images/destinations/madakalapuwa.png",
+                "rating": "5",
+                "location": "Jaffna"
+            },
+];
+           function getFavListFromDB(){
+           return  firebase.database().ref('favourites/user1').once('value').then(function(snapshot) {
+
+                   snapshot.forEach(function(childSnapshot) {
+                       // var childKey = childSnapshot.key;
+                       var childData = childSnapshot.val();
+                       console.log("came data",childData);
+                       favData.push(childData['location']);
+                       $(".destination-list-fav").append(`<div class="destination-list-item">
+                                <div class="destination-list-img">
+                                    <img src="${childData['destinationImg']}">
+                                </div>
+                                <div class="destination-list-text">
+<!--                                    <img src="../assets/images/Rating_ca.png">-->
+
+                                    <span>${childData['location']}</span>
+                                    <i  style="color: #ff7761" class="fa fa-heart"></i>
+                                </div>
+                            </div>`);
+                       // ...
+                   });
+               });
+        }
+        getFavListFromDB();
+
+           $("#emailListButton").on("click",function () {
+               let list = "";
+               console.log(favData);
+               $.each(favData, function( index, value ) {
+                    list = list + `${index+1} . ${value} \n`;
+               });
+               console.log(list);
+               Email.send({
+                   Host: "smtp.gmail.com",
+                   Username : "destinarauiux@gmail.com",
+                   Password : "destinara123",
+                   To : 'destinarauiux@gmail.com',
+                   From : "destinarauiux@gmail.com",
+                   Subject : "You favourite List from destinara!",
+                   Body : list,
+               }).then(
+                   message => alert("mail sent successfully")
+               );
+           });
+    });
+</script>
 </html>
