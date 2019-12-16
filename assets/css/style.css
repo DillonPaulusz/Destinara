@@ -560,6 +560,7 @@
 
 .destination-list-img img {
     height: 35px;
+    width: 35px;
     border-width: 0.5px;
     float: left;
     border-style :solid;

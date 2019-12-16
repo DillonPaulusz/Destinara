@@ -8,13 +8,17 @@
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/js/fontawesome.min.js"></script>
+
+<!--    firebase-->
+    <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-database.js"></script>
+    <script src="../assets/js/firebaseInitialise.js"></script>
     <link rel="stylesheet" href="../font-aw/css/all.css" />
     <script>
         let searchParams = new URLSearchParams(window.location.search);
         let id = searchParams.get('id');
-
+        let selectedDestination;
         var activies = [{}];
-
         $.ajax({
             type: 'GET',
             async :false,
@@ -38,20 +42,42 @@
 
                 $.each(data, function(index, element) {
                     if(element.destination_id == id){
+                        selectedDestination = element;
+                        console.log("Destination ",selectedDestination);
                         $('.destination-img').hide().attr('src', element.imageurl).show();
                         $('.destination-desc').text(element.description);
-                        $('.destination-name').append(element.name + " <i class='far fa-heart' style='float: right'></i>");
+                        $('.destination-name').append(element.name +  `<i class='far fa-heart' id="heartIt" style='float: right'></i>`);
                         $.each(element.activities, function(index, element) {
                             $.each(activies, function(i, item) {
                                 if(item.activity == element){
-                                    console.log(item.activity)
+                                    console.log(item.activity);
                                     $('.destination-activies').append("<div class='des-cont'><div class='definition-act-cont' onclick='myFunction("+ item.activity +")'><img src="+item.imageurl+" alt='Avatar' class='definition-act-img'>\n" +
                                         "<div class='definition-act-over'><div class='definition-act-text'>"+item.name +"</div></div></div></div>")
                                 }
                             });
                         });
+
+                        $("#heartIt").on("click",function () {
+                            console.log("add to favourite");
+                            var newKey = firebase.database().ref().child('favourites').push().key;
+                            return firebase.database().ref('favourites/user1/'+newKey).set({
+                                destinationImg: selectedDestination['imageurl'],
+                                location: selectedDestination['name']
+                            }, function(error) {
+                                if (error) {
+                                    // The write failed...
+                                    console.log("Data adding failed");
+                                } else {
+                                    $(".destination-name").empty();
+                                    $('.destination-name').append(selectedDestination['name'] +  `<i class='fa fa-heart' id="heartIt" style='float: right'></i>`);
+                                    console.log("Data added successfully");
+                                    // Data saved successfully!
+                                }
+                            });
+                        })
                     }
                 });
+
             }
         });
     </script>
