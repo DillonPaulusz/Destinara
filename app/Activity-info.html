@@ -19,8 +19,9 @@
                 data: { get_param: 'value' },
                 dataType: 'json',
                 success: function (data) {
+
                     $.each(data, function(index, element) {
-                        if(element.id == id){
+                        if(element.activity == id){
                             $('#activity-pg-img').hide().attr('src', element.imageurl).show();
                             $('#activity-pg-info').text(element.Description);
                             $('#activity-pg-name').text(element.name);

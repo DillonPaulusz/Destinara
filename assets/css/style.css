@@ -212,6 +212,7 @@
 }
 
 
+
 .activity-container {
     position: relative;
     text-align: justify;
@@ -732,5 +733,88 @@ height: 30px
     font-style: italic;
     text-align: justify;
     color: #777777;
+    color: #777777;
     text-justify: inter-word;
+}
+
+.destination-img {
+    height: 200px;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.destination-name {
+    margin-top: 10px;
+    font-family: Source Sans Pro;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    color: rgba(0, 0, 0, 1);
+}
+
+.destination-desc{
+    margin-top: 10px;
+    text-align: justify;
+    font-size: 14px;
+    font-family: Source Sans Pro;
+}
+
+.destination-activies h1{
+    margin-top: 10px;
+    font-family: Source Sans Pro;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    color: rgb(151, 151, 151);
+}
+
+
+.definition-act-img{
+    width: 90%;
+    margin: 8px;
+    height: 60px;
+    border-radius: 10px;
+}
+
+
+
+.definition-act-cont {
+    position: relative;
+    text-align: justify;
+
+}
+
+.definition-act-over {
+    border-radius: 5px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    border-radius: 10px;
+    left: 0;
+    right: 0;
+    height: 60px;
+    width: 90%;
+    opacity: 55%;
+    transition: .5s ease;
+    background-color: #000000;
+    margin: 8px;
+}
+
+
+.definition-act-text {
+    color: white;
+    font-size: 15px;
+    font-family: Black Italic;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.des-cont{
+    width: 33%;
+    float: left;
 }

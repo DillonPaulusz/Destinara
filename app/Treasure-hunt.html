@@ -9,23 +9,18 @@
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
-
-
-
     <style>
-
         #content {
             padding: 0;
-            position : relative !important;
+            position: relative !important;
             height: 400px;
-            right : 0;
-            left : 0 !important;
+            right: 0;
+            left: 0 !important;
         }
     </style>
     <script>
-        $(document).ready(function(){
-            $( "#progressbar2" ).progressbar({
+        $(document).ready(function () {
+            $("#progressbar2").progressbar({
                 value: 26
             });
             setTimeout(function () {
@@ -33,11 +28,10 @@
                 var minZoomLevel = 12;
 
 
-
                 if (navigator.geolocation) {
 
                     // Get current position
-                    navigator.geolocation.getCurrentPosition(function(position) {
+                    navigator.geolocation.getCurrentPosition(function (position) {
 
                         var map = new google.maps.Map(document.getElementById('map_canvas'), {
                             zoom: minZoomLevel,
@@ -60,8 +54,8 @@
 </head>
 <body>
 <div data-role="page" id="index">
-    <div data-role="header"   data-position="fixed">
-        <div  style="background-color: #FF8F77">
+    <div data-role="header" data-position="fixed">
+        <div style="background-color: #FF8F77">
             <div class="head-logo">
                 <img src="../assets/images/header-logo.png">
             </div>
@@ -71,29 +65,27 @@
     <div style="padding: 15px">
         <div id="progressbar2" style="margin-bottom: 20px"></div>
     </div>
-    <div >
-
-
+    <div>
         <div>
-                <div data-role="content" id="content">
-                    <div id="map_canvas" style="height:100%"></div>
-                </div>
+            <div data-role="content" id="content">
+                <div id="map_canvas" style="height:100%"></div>
+            </div>
         </div>
-
         <div style="text-align: center;margin-top: 20px">
-            <a class="button-def ui-shadow" href="GameRules.html" style="margin-right: 8px" data-ajax="false"> Game rules</a>
-            <a class="button-def ui-shadow" href="Challenges.html" style="margin-left: 8px" data-ajax="false"> Challenges</a>
+            <a class="button-def ui-shadow" href="GameRules.html" style="margin-right: 8px" data-ajax="false"> Game
+                rules</a>
+            <a class="button-def ui-shadow" href="Challenges.html" style="margin-left: 8px" data-ajax="false">
+                Challenges</a>
         </div>
     </div>
-
-
     <div data-role="footer" data-position="fixed" class="nav-bar" data-tap-toggle="false">
         <div data-role="navbar" class="nav-bar">
             <ul>
-                <li><a href="Home.html" id="homeNav" data-icon="custom" data-ajax="false"   ></a></li>
-                <li><a href="Treasure-hunt.html"  class="ui-btn-active" id="treasurehuntNav" data-icon="custom" data-ajax="false"   ></a></li>
-                <li><a href="Leaderboard.html" id="leaderboardNav" data-icon="custom" data-ajax="false"   ></a></li>
-                <li><a href="Profile.html" id="profileNav" data-icon="custom" data-ajax="false"   ></a></li>
+                <li><a href="Home.html" id="homeNav" data-icon="custom" data-ajax="false"></a></li>
+                <li><a href="Treasure-hunt.html" class="ui-btn-active" id="treasurehuntNav" data-icon="custom"
+                       data-ajax="false"></a></li>
+                <li><a href="Leaderboard.html" id="leaderboardNav" data-icon="custom" data-ajax="false"></a></li>
+                <li><a href="Profile.html" id="profileNav" data-icon="custom" data-ajax="false"></a></li>
             </ul>
         </div>
     </div>
