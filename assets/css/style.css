@@ -590,7 +590,11 @@
     float: right;
     height: 25px;
 }
-
+.destination-list-text i{
+    float: right;
+    height: 25px;
+    margin-top: 5px;
+}
 .about-us-head{
     padding: 25px;
     text-align: center;
