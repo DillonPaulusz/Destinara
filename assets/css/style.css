@@ -709,3 +709,74 @@ height: 30px
     font-size: 18px;
     font-weight: bold;
 }
+
+#signupTop {
+
+}
+
+#signupBottom {
+    right: 0px;
+    bottom: -4px;
+    position: fixed;
+}
+
+#registerText {
+    font-family: "Source Sans Pro";
+    font-weight: bold;
+    font-size: 30px;
+    text-align: center;
+    margin-top: -2px;
+}
+
+#registerLogoContainer {
+    text-align: center;
+    margin-top: -150px;
+}
+
+.logoName {
+    font-family: "Source Sans Pro";
+    font-weight: bold;
+    font-size: 20px;
+    color: #E74B43;
+    text-align: center;
+}
+
+.logoImage {
+    margin-top: -20px;
+}
+
+#formContainer {
+    box-shadow: 3px 3px 5px 6px #ccc;
+    border-radius: 5px 50px 50px 5px;
+    width: 60%;
+    height: 300px;
+    padding: 20px;
+    margin-bottom: -30px;
+    position: absolute;
+}
+
+.container .formField {
+    height: 60px;
+    border: unset;
+    background: #f9f9f9;
+
+}
+
+.registerButton {
+    position: fixed; /* or absolute */
+    margin-left: 215px;
+    margin-top: -160px;
+}
+
+#loginButton {
+    width: 100px;
+    height: 40px;
+    right: 0px;
+    top: 100px;
+    background-color: #FF7662;
+    color: #fff;
+    font-family: "Source Sans Pro";
+    border-radius: 50px 5px 5px 50px;
+    position: fixed;
+}
+
