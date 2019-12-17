@@ -824,12 +824,13 @@ height: 30px
 .challenge-img{
     width: 100%;
     border-radius: 20px;
-    height: 200px;
+    height:  100%;
 }
 
 
 .challenge-container {
     position: relative;
+    height: 100%;
     text-align: justify;
 }
 .challenge-overlay {
@@ -840,7 +841,7 @@ height: 30px
     bottom: 0;
     left: 0;
     right: 0;
-    height: 200px;
+    height: 100%;
     width: 100%;
     opacity: 55%;
     transition: .5s ease;
