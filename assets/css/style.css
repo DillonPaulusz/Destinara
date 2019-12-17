@@ -254,7 +254,7 @@
     border: #E74B43;
     border-style: solid;
     border-radius: 6px;
-    height: 120px;
+    min-height: 120px;
     border-width: 1px;
     box-shadow: 5px 10px #888888;
     box-shadow: 2px 2px 4px 1px #1d1d1d3b;
@@ -769,6 +769,15 @@ height: 30px
     color: rgb(151, 151, 151);
 }
 
+
+.destination-reviews h1{
+    margin-top: 10px;
+    font-family: Source Sans Pro;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    color: rgb(151, 151, 151);
+}
 
 .definition-act-img{
     width: 90%;
