@@ -3,18 +3,18 @@
 <head>
     <title>Destinara | Destination info</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    <link rel="stylesheet" href="../assets/css/jquery.mobile-1.4.5.min.css"/>
     <link rel="stylesheet" href="../assets/css/style.css" />
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/js/fontawesome.min.js"></script>
+    <link rel="stylesheet" href="../font-aw/css/all.css" />
 
 <!--    firebase-->
     <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-database.js"></script>
     <script src="../assets/js/firebaseInitialise.js"></script>
-    <link rel="stylesheet" href="../font-aw/css/all.css" />
-    <script>
+        <script>
         let searchParams = new URLSearchParams(window.location.search);
         let id = searchParams.get('id');
         let selectedDestination;
@@ -93,9 +93,30 @@
             <div class="head-text">
                 Destination info
             </div>
+            <a href = "#mypanel" style="position: absolute ;top: 45%; right: 20px;height: 100%; color: #f9f9f9;"> <i class="fas fa-bars"></i></a>
         </div>
     </div><!-- /header -->
+    <div data-role="panel" id="mypanel" data-display="overlay">
+        <div data-position="fixed">
+            <div style="height: 130px;text-align: center;margin-top: 20px">
+                <img  style="float: none !important;" class="lb-profile-pic" src="../assets/images/profile/profile-pic.jpg">
+                <div class="lb-profile-text">
+                    <p class="lb-profile-name">Dillon Paulusz</p>
+                </div>
+            </div>
+            <br>
+            <ul data-role="listview" data-inset="true">
+                <li><a href="#">Cart</a></li>
+                <li><a href="AboutUs.html">About us</a></li>
+            </ul>
+            <div style="position: fixed;text-align: center;bottom: 51px;left: 0;right: 0">
+                <div style="margin: 10px">
+                    <a class="button-def ui-shadow" data-ajax="false" href="#">logout</a>
+                </div>
 
+            </div>
+        </div>
+    </div>
     <div style="padding: 15px">
         <div class="destination-info">
             <img class="destination-img">
@@ -116,9 +137,9 @@
 
     </div>
 
-    <div style="position: fixed;background-color: #f9f9f9;text-align: center;bottom: 51px;left: 0;right: 0">
+    <div style="position: fixed;text-align: center;bottom: 51px;left: 0;right: 0;background-color: #f9f9f9 ">
         <div style="margin: 10px">
-            <a class="button-def ui-shadow" href="#">Book ticket</a>
+            <a class="button-def ui-shadow" data-ajax="false" href="BookTickets.html">Book ticket</a>
         </div>
 
     </div>
