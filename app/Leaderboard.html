@@ -3,11 +3,14 @@
 <head>
     <title>Destinara | Leaderboard</title>
     <meta content="width=device-width, initial-scale=1" name="viewport">
-    <link href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="../assets/css/jquery.mobile-1.4.5.min.css"/>
     <link href="../assets/css/style.css" rel="stylesheet"/>
     <link href="../assets/css/jquery-ui.css" rel="stylesheet"/>
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/js/fontawesome.min.js"></script>
+    <link rel="stylesheet" href="../font-aw/css/all.css" />
+
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
     <script>
@@ -56,10 +59,32 @@
         <div style="background-color: #FF8F77">
             <div class="head-logo">
                 <img src="../assets/images/header-logo.png">
+                <a href = "#mypanel" style="position: absolute ;top: 25%; right: 20px;height: 100%; color: #f9f9f9;"> <i class="fas fa-bars"></i></a>
+
             </div>
+
         </div>
     </div><!-- /header -->
-
+    <div data-role="panel" id="mypanel" data-display="overlay">
+        <div data-position="fixed">
+            <div style="height: 130px;text-align: center;margin-top: 20px">
+                <img  style="float: none !important;" class="lb-profile-pic" src="../assets/images/profile/profile-pic.jpg">
+                <div style="font-family: Source Sans Pro;">
+                    <p class="lb-profile-name">Dillon Paulusz</p>
+                </div>
+            </div>
+            <br>
+            <ul data-role="listview" data-inset="true">
+                <li><a href="#">Cart</a></li>
+                <li><a href="AboutUs.html">About us</a></li>
+            </ul>
+            <div style="position: fixed;text-align: center;bottom: 51px;left: 0;right: 0">
+                <div style="margin: 10px">
+                    <a class="button-def ui-shadow" data-ajax="false" href="#">logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="profile-header">
 
 

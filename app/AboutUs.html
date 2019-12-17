@@ -3,10 +3,12 @@
 <head>
     <title>Destinara | About Us </title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    <link rel="stylesheet" href="../assets/css/jquery.mobile-1.4.5.min.css"/>
     <link rel="stylesheet" href="../assets/css/style.css" />
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/js/fontawesome.min.js"></script>
+    <link rel="stylesheet" href="../font-aw/css/all.css" />
 
 </head>
 <body>
@@ -16,8 +18,32 @@
             <div class="head-text">
               About us
             </div>
+            <a href = "#mypanel" style="position: absolute ;top: 35%; right: 20px;height: 100%; color: #f9f9f9;"> <i class="fas fa-bars"></i></a>
         </div>
     </div><!-- /header -->
+
+    <div data-role="panel" id="mypanel" data-display="overlay">
+        <div data-position="fixed">
+            <div style="height: 130px;text-align: center;margin-top: 20px">
+                <img  style="float: none !important;" class="lb-profile-pic" src="../assets/images/profile/profile-pic.jpg">
+                <div class="lb-profile-text">
+                    <p class="lb-profile-name">Dillon Paulusz</p>
+                </div>
+            </div>
+            <br>
+            <ul data-role="listview" data-inset="true">
+                <li><a href="#">Cart</a></li>
+                <li><a href="AboutUs.html">About us</a></li>
+            </ul>
+            <div style="position: fixed;text-align: center;bottom: 51px;left: 0;right: 0">
+                <div style="margin: 10px">
+                    <a class="button-def ui-shadow" data-ajax="false" href="#">logout</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
     <div class="about-us">
         <div class="about-us-head">
             <img src="../assets/images/Group%208.png">
@@ -57,7 +83,7 @@ s
             <ul>
                 <li><a href="Home.html" id="homeNav" data-icon="custom" data-ajax="false"></a></li>
                 <li><a href="Treasure-hunt.html" id="treasurehuntNav" data-icon="custom" data-ajax="false"   ></a></li>
-                <li><a href="Leaderboard.html" class="ui-btn-active" id="leaderboardNav" data-icon="custom" data-ajax="false"   ></a></li>
+                <li><a href="Leaderboard.html" id="leaderboardNav" data-icon="custom" data-ajax="false"   ></a></li>
                 <li><a href="Profile.html" id="profileNav" data-icon="custom" data-ajax="false"   ></a></li>
             </ul>
         </div>
