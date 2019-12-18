@@ -3,16 +3,27 @@
 <head>
     <title>Destinara | Challenges</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"/>
+    <link rel="stylesheet" href="../assets/css/jquery.mobile-1.4.5.min.css"/>
     <link rel="stylesheet" href="../assets/css/style.css"/>
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <link href="../assets/css/jquery-ui.css" rel="stylesheet"/>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/js/fontawesome.min.js"></script>
+    <link rel="stylesheet" href="../font-aw/css/all.css" />
 
+    <script>
+        $(document).ready(function () {
+            $("#progressbar2").progressbar({
+                value: 26
+            });
+        });
+    </script>
 </head>
 <body>
 <div data-role="page">
-    <div data-role="header"  class="head" data-position="fixed" style="position: fixed">
-        <div   class="head" style="background-color: #FF8F77">
+    <div data-role="header" class="head" data-position="fixed" style="position: fixed">
+        <div class="head" style="background-color: #FF8F77">
             <div class="back">
                 <a onclick="history.back()"><img src="../assets/images/icons/back.png"></a>
             </div>
@@ -20,21 +31,78 @@
             <div class="head-text">
                 Challenges
             </div>
+            <a href = "#mypanel" style="position: absolute ;top: 45%; right: 20px;height: 100%; color: #f9f9f9;"> <i class="fas fa-bars"></i></a>
         </div>
     </div><!-- /header -->
+    <div data-role="panel" id="mypanel" data-display="overlay">
+        <div data-position="fixed" class="sidebar">
+            <div class="sidebar-head">
+                <img class="lb-profile-pic" src="../assets/images/profile/profile-pic.jpg">
+                <div class="lb-profile-text">
+                    <p class="lb-profile-name" style="color: white !important;">Dillon Paulusz</p>
+                </div>
+            </div>
+            <ul  data-role="listview">
+                <li><a class="sidebar-item" href="cart.html">Cart</a></li>
+                <li><a  class="sidebar-item" href="AboutUs.html">About us</a></li>
+            </ul>
+            <div class="sidebar-logout">
+                <div style="margin: 10px">
+                    <a class="button-def ui-shadow" data-ajax="false" href="#">logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="padding: 15px;position: absolute;top: 71px;bottom: 50px ;left: 0; right: 0">
+        <div style="font-size: 10px"><div style="float: left"> gold </div> <div style="float: right">platinum</div></div>
+        <br>
+        <div id="progressbar2" style="margin-bottom: 20px"></div>
+        <div style="position: absolute;top: 94px;bottom: 0;left: 15px;right: 15px">
+            <div style="border-radius: 10px;height: 45%" onclick="openchallenge(1)" >
+                <div class="challenge-container">
+                    <img src="../assets/images/challenges/index@2x.png" alt="Avatar" class="challenge-img">
+                    <div class="challenge-overlay">
+                        <div class="challenge-text">Qr code challenge</div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div style="border-radius: 10px;height: 45%" onclick="openchallenge(2)" >
+                <div class="challenge-container">
+                    <img src="../assets/images/challenges/introducinghomep_1496776836626@2x.png" alt="Avatar"
+                         class="challenge-img">
+                    <div class="challenge-overlay">
+                        <div class="challenge-text">Ar challenge</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
 
 
     <div class="nav-bar" data-position="fixed" data-role="footer" data-tap-toggle="false">
         <div class="nav-bar" data-role="navbar">
             <ul>
                 <li><a data-ajax="false" data-icon="custom" href="Home.html" id="homeNav"></a></li>
-                <li><a data-ajax="false" data-icon="custom" href="Treasure-hunt.html" id="treasurehuntNav"></a></li>
-                <li><a class="ui-btn-active" data-ajax="false" data-icon="custom" href="Leaderboard.html"
+                <li><a class="ui-btn-active" data-ajax="false" data-icon="custom" href="Treasure-hunt.html" id="treasurehuntNav"></a></li>
+                <li><a  data-ajax="false" data-icon="custom" href="Leaderboard.html"
                        id="leaderboardNav"></a></li>
                 <li><a data-ajax="false" data-icon="custom" href="Profile.html" id="profileNav"></a></li>
             </ul>
         </div>
     </div>
 </div>
+<script>
+    function openchallenge(id) {
+
+        if(id === 1){
+            window.location.href="Qr.html";
+        } else {
+            window.location.href="Ar.html";
+        }
+    }
+</script>
 </body>
 </html>

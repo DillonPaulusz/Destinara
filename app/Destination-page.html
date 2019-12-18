@@ -3,18 +3,18 @@
 <head>
     <title>Destinara | Destination info</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    <link rel="stylesheet" href="../assets/css/jquery.mobile-1.4.5.min.css"/>
     <link rel="stylesheet" href="../assets/css/style.css" />
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/js/fontawesome.min.js"></script>
+    <link rel="stylesheet" href="../font-aw/css/all.css" />
 
 <!--    firebase-->
     <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-database.js"></script>
     <script src="../assets/js/firebaseInitialise.js"></script>
-    <link rel="stylesheet" href="../font-aw/css/all.css" />
-    <script>
+        <script>
         let searchParams = new URLSearchParams(window.location.search);
         let id = searchParams.get('id');
         let selectedDestination;
@@ -46,6 +46,7 @@
                         console.log("Destination ",selectedDestination);
                         $('.destination-img').hide().attr('src', element.imageurl).show();
                         $('.destination-desc').text(element.description);
+                        $("#bookticket").attr("href", "BookTickets.html?id="+element.destination_id);
                         $('.destination-name').append(element.name +  `<i class='far fa-heart' id="heartIt" style='float: right'></i>`);
                         $.each(element.activities, function(index, element) {
                             $.each(activies, function(i, item) {
@@ -93,8 +94,28 @@
             <div class="head-text">
                 Destination info
             </div>
+            <a href = "#mypanel" style="position: absolute ;top: 45%; right: 20px;height: 100%; color: #f9f9f9;"> <i class="fas fa-bars"></i></a>
         </div>
     </div><!-- /header -->
+    <div data-role="panel" id="mypanel" data-display="overlay">
+        <div data-position="fixed" class="sidebar">
+            <div class="sidebar-head">
+                <img class="lb-profile-pic" src="../assets/images/profile/profile-pic.jpg">
+                <div class="lb-profile-text">
+                    <p class="lb-profile-name" style="color: white !important;">Dillon Paulusz</p>
+                </div>
+            </div>
+            <ul  data-role="listview">
+                <li><a class="sidebar-item" href="cart.html">Cart</a></li>
+                <li><a  class="sidebar-item" href="AboutUs.html">About us</a></li>
+            </ul>
+            <div class="sidebar-logout">
+                <div style="margin: 10px">
+                    <a class="button-def ui-shadow" data-ajax="false" href="#">logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div style="padding: 15px">
         <div class="destination-info">
@@ -107,13 +128,26 @@
                 <h1>Activities</h1>
             </div>
 
+            <br>  <br>  <br>  <br>
+            <div class="destination-reviews">
+                <h1>Reviews</h1>
+            </div>
         </div>
+        <br>  <br>  <br>  <br><br>  <br>  <br>  <br>
 
+    </div>
+
+    <div style="position: fixed;text-align: center;bottom: 51px;left: 0;right: 0;background-color: #f9f9f9 ">
+        <div style="margin: 10px">
+            <a class="button-def ui-shadow" id="bookticket" data-ajax="false" href="BookTickets.html">Book ticket</a>
+        </div>
 
     </div>
 
     <div data-role="footer" data-position="fixed" class="nav-bar" data-tap-toggle="false">
+
         <div data-role="navbar" class="nav-bar">
+
             <ul>
                 <li><a href="Home.html" id="homeNav" data-icon="custom" data-ajax="false"></a></li>
                 <li><a href="Treasure-hunt.html" id="treasurehuntNav" data-icon="custom" data-ajax="false"   ></a></li>

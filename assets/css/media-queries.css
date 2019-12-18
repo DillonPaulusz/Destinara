@@ -1,0 +1,171 @@
+/*!*PORTRAIT STYLES*!******************************/
+
+/* Extra small devices (phones, 600px and down) */
+
+/*SIGN UP STYLES*/
+
+@media only screen and (min-width: 410px) {
+
+    #registerText {
+        font-size: 25px;
+    }
+
+    .registerButton {
+        margin-left: 245px !important;
+    }
+
+}
+
+@media only screen and (max-height: 670px) {
+    #registerText {
+        font-size: 25px;
+    }
+
+    #registerLogoContainer {
+        margin-top: -170px;
+    }
+
+
+    #formContainer {
+        height: 275px;
+    }
+
+    .container .formField {
+        height: 55px;
+
+    }
+
+    .registerButton {
+        margin-left: 225px !important;
+        margin-top: -160px !important;
+    }
+
+}
+
+@media only screen and (min-width: 375px) {
+    .registerButton {
+        margin-left: 220px;
+        margin-top: -170px;
+    }
+}
+
+/*LANDSCAPE STYLES************************************/
+
+@media only screen and (min-width: 736px) and (min-height: 414px) {
+    .topImage {
+        content: url("../../assets/images/landscape_1.png");
+    }
+
+    .bottomImage {
+        content: url("../../assets/images/landscape_bottom_1.png");
+    }
+
+    #formContainer {
+        border-radius: 20px 20px 20px 20px;
+        width: 50%;
+        height: 170px;
+        margin-left: 150px;
+        margin-top: 10px;
+    }
+
+    .logoName {
+        font-size: 15px;
+    }
+
+    .container .formField {
+        height: 2px !important;
+        border: unset;
+        background: #f9f9f9;
+
+    }
+    
+    #registerText {
+        display: none;
+    }
+
+    .logoImage {
+        content: url("../../assets/images/Logo_small.png");
+
+    }
+
+    #registerLogoContainer {
+        margin-top: -155px;
+    }
+
+    .registerButton {
+        margin-left: 365px !important;
+        margin-top: -130px !important;
+    }
+
+    #loginButton {
+        width: 100px;
+        height: 40px;
+        right: 0px;
+        top: 60px;
+        background-color: #FF7662;
+        color: #fff;
+        font-family: "Source Sans Pro";
+        border-radius: 50px 5px 5px 50px;
+        position: fixed;
+    }
+
+}
+
+
+/*LOGIN STYLES*/
+
+@media only screen and (min-width: 736px) and (min-height: 414px) {
+    .topImage {
+        content: url("../../assets/images/landscape_1.png");
+    }
+
+    .bottomImage {
+        content: url("../../assets/images/landscape_bottom_1.png");
+    }
+
+    #loginFormContainer {
+        border-radius: 20px 20px 20px 20px;
+        width: 50%;
+        height: 100px;
+        margin-left: 150px;
+        margin-top: -10px;
+    }
+
+    .logoName {
+        font-size: 15px;
+    }
+
+    .container .loginFormField {
+        height: 2px !important;
+        border: unset;
+        background: #f9f9f9;
+
+    }
+
+    .logoImage {
+        content: url("../../assets/images/Logo_small.png");
+
+    }
+
+    #registerLogoContainer {
+        margin-top: -155px;
+    }
+
+    .loginProceedButton {
+        margin-left: 365px !important;
+        margin-top: -130px !important;
+    }
+
+    #registerLink {
+        width: 100px;
+        height: 40px;
+        right: 0px;
+        top: 300px;
+        background-color: #FF7662;
+        color: #fff;
+        font-family: "Source Sans Pro";
+        border-radius: 5px 50px 50px 5px;
+        position: fixed;
+    }
+
+}
