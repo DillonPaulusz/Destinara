@@ -32,27 +32,24 @@
     </div><!-- /header -->
     <div>
         <div data-role="panel" id="mypanel" data-display="overlay">
-            <div data-position="fixed">
-                <div style="height: 130px;text-align: center;margin-top: 20px">
-                    <img  style="float: none !important;" class="lb-profile-pic" src="../assets/images/profile/profile-pic.jpg">
+            <div data-position="fixed" class="sidebar">
+                <div class="sidebar-head">
+                    <img class="lb-profile-pic" src="../assets/images/profile/profile-pic.jpg">
                     <div class="lb-profile-text">
-                        <p class="lb-profile-name">Dillon Paulusz</p>
+                        <p class="lb-profile-name" style="color: white !important;">Dillon Paulusz</p>
                     </div>
                 </div>
-                <br>
-                <ul data-role="listview" data-inset="true">
-                    <li><a href="#">Cart</a></li>
-                    <li><a href="AboutUs.html">About us</a></li>
+                <ul  data-role="listview">
+                    <li><a class="sidebar-item" href="cart.html">Cart</a></li>
+                    <li><a  class="sidebar-item" href="AboutUs.html">About us</a></li>
                 </ul>
-                <div style="position: fixed;text-align: center;bottom: 51px;left: 0;right: 0">
+                <div class="sidebar-logout">
                     <div style="margin: 10px">
                         <a class="button-def ui-shadow" data-ajax="false" href="#">logout</a>
                     </div>
-
                 </div>
             </div>
         </div>
-
         <div data-role="tabs" id="tabs">
             <div class="profile-header">
                 <div class="profile">
