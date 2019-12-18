@@ -60,7 +60,7 @@
 
 
                         $("#bookticket").attr("href", "BookTickets.html?id="+element.destination_id);
-                        $('.destination-name').append(element.name +  `<i class='far fa-heart' id="heartIt" style='float: right'></i>`);
+                        $('.destination-name').append(element.name +  `<i class='far fa-heart' id="heartIt" style='float: right;margin-left: 5px'></i>`);
                         $.each(element.activities, function(index, element) {
                             $.each(activies, function(i, item) {
                                 if(item.activity == element){
@@ -82,7 +82,7 @@
                                     console.log("Data adding failed");
                                 } else {
                                     $(".destination-name").empty();
-                                    $('.destination-name').append(selectedDestination['name'] +  `<i class='fa fa-heart' id="heartIt" style='float: right'></i>`);
+                                    $('.destination-name').append(selectedDestination['name'] +  `<i class='fa fa-heart' id="heartIt" style='float: right;margin-left: 5px'></i>`);
                                     console.log("Data added successfully");
                                     // Data saved successfully!
                                 }
@@ -134,7 +134,7 @@
 
         /* Idle State of the stars */
         .rating-stars ul > li.star > i.fa {
-            font-size:2.5em; /* Change the size of the stars */
+            font-size:-0.5em; /* Change the size of the stars */
             color:#ccc; /* Color on idle state */
         }
 
@@ -148,7 +148,7 @@
 </head>
 <body>
 <div data-role="page">
-    <div data-role="header"  class="head" data-position="fixed" style="position: fixed">
+    <div data-role="header"  class="head" data-position="fixed" data-tap-toggle="false" style="position: fixed">
         <div   class="head" style="background-color: #FF8F77">
             <div class="back">
                 <a onclick="history.back()"><img src="../assets/images/icons/back.png"></a>
@@ -183,9 +183,32 @@
     <div style="padding: 15px">
         <div class="destination-info">
             <img class="destination-img">
-            <div class="destination-name"></div>
+            <div class="destination-name" style="float:left;"></div>
+            <section class='rating-widget' style="float: right">
+                <div class='rating-stars text-center'>
+                    <ul id='stars'>
+                        <li class='star' title='Poor' data-value='1'>
+                            <i class='fa fa-star fa-fw'></i>
+                        </li>
+                        <li class='star' title='Fair' data-value='2'>
+                            <i class='fa fa-star fa-fw'></i>
+                        </li>
+                        <li class='star' title='Good' data-value='3'>
+                            <i class='fa fa-star fa-fw'></i>
+                        </li>
+                        <li class='star' title='Excellent' data-value='4'>
+                            <i class='fa fa-star fa-fw'></i>
+                        </li>
+                        <li class='star' title='WOW!!!' data-value='5'>
+                            <i class='fa fa-star fa-fw'></i>
+                        </li>
+                    </ul>
+                </div>
 
-            <div class="destination-desc" style="padding: 5px"></div>
+            </section>
+
+
+            <div class="destination-desc" style="padding: 5px;margin-top: 50px"></div>
 
             <div class="destination-activies">
                 <h1>Activities</h1>
@@ -193,43 +216,10 @@
 
             <br>  <br>  <br>  <br>
             <div class="destination-reviews">
-                <h1>Reviews
+                <h1>Reviews  <div style="float: right">+Add review</div></h1>
 
-                </h1>
 
-                <section class='rating-widget'>
-                    <div class='rating-stars text-center'>
-                        <ul id='stars'>
-                            <li class='star' title='Poor' data-value='1'>
-                                <i class='fa fa-star fa-fw'></i>
-                            </li>
-                            <li class='star' title='Fair' data-value='2'>
-                                <i class='fa fa-star fa-fw'></i>
-                            </li>
-                            <li class='star' title='Good' data-value='3'>
-                                <i class='fa fa-star fa-fw'></i>
-                            </li>
-                            <li class='star' title='Excellent' data-value='4'>
-                                <i class='fa fa-star fa-fw'></i>
-                            </li>
-                            <li class='star' title='WOW!!!' data-value='5'>
-                                <i class='fa fa-star fa-fw'></i>
-                            </li>
-                        </ul>
-                    </div>
-
-                </section>
-
-                <div id="review-content">
-<!--                    <div class="rating-usr" style="padding: 15px">-->
-<!--                        <div style="height: 60px">-->
-<!--                            <img src="../assets/images/aboutus/dillon.png">-->
-<!--                            <div class="rating-usr-name">Dillon</div>-->
-<!--                            <div class="rate-date">2019/12/27</div>-->
-<!--                        </div>-->
-<!--                        <p class="rating-comment">There are several ways to get to the bridge, we got a tuk tuk up the back, a short walk up a very steep road and walked thru the tunnel to the bridge.</p>-->
-<!--                    </div>-->
-                </div>
+                <div id="review-content"></div>
 
 
             </div>
