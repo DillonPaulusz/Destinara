@@ -46,6 +46,7 @@
                         console.log("Destination ",selectedDestination);
                         $('.destination-img').hide().attr('src', element.imageurl).show();
                         $('.destination-desc').text(element.description);
+                        $("#bookticket").attr("href", "BookTickets.html?id="+element.destination_id);
                         $('.destination-name').append(element.name +  `<i class='far fa-heart' id="heartIt" style='float: right'></i>`);
                         $.each(element.activities, function(index, element) {
                             $.each(activies, function(i, item) {
@@ -139,7 +140,7 @@
 
     <div style="position: fixed;text-align: center;bottom: 51px;left: 0;right: 0;background-color: #f9f9f9 ">
         <div style="margin: 10px">
-            <a class="button-def ui-shadow" data-ajax="false" href="BookTickets.html">Book ticket</a>
+            <a class="button-def ui-shadow" id="bookticket" data-ajax="false" href="BookTickets.html">Book ticket</a>
         </div>
 
     </div>

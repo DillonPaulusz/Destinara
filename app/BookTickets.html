@@ -8,11 +8,132 @@
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/js/fontawesome.min.js"></script>
+    <link href="https://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
     <link rel="stylesheet" href="../font-aw/css/all.css" />
+<script>
+    $.mobile.document
+        .on( "listviewcreate", "#filter-menu-menu", function( e ) {
+            var input,
+                listbox = $( "#filter-menu-listbox" ),
+                form = listbox.jqmData( "filter-form" ),
+                listview = $( e.target );
 
+            if ( !form ) {
+                input = $( "<input data-type='search'></input>" );
+                form = $( "<form></form>" ).append( input );
+                input.textinput();
+                $( "#filter-menu-listbox" )
+                    .prepend( form )
+                    .jqmData( "filter-form", form );
+            }
+
+            listview.filterable({ input: input });
+        })
+
+        .on( "pagebeforeshow pagehide", "#filter-menu-dialog", function( e ) {
+            var form = $( "#filter-menu-listbox" ).jqmData( "filter-form" ),
+                placeInDialog = ( e.type === "pagebeforeshow" ),
+                destination = placeInDialog ? $( e.target ).find( ".ui-content" ) : $( "#filter-menu-listbox" );
+            form
+                .find( "input" )
+
+                .textinput( "option", "inset", !placeInDialog )
+                .end()
+                .prependTo( destination );
+        });
+
+    let searchParams = new URLSearchParams(window.location.search);
+    let id = searchParams.get('id');
+
+    $.ajax({
+        type: 'GET',
+        url: '../Json/tickets.json',
+        data: {get_param: 'value'},
+        dataType: 'json',
+        success: function (data) {
+
+            var sorted = data.sort(function (a, b) {
+                if (a.points > b.points) {
+                    return -1;
+                }
+                if (a.points < b.points) {
+                    return 1;
+                }
+
+                return 0;
+            });
+
+            $.each(sorted, function (index, element) {
+                if(element.location_id === id){
+                    $('#totext').val(element.location_name) ;
+                    $('#totext').attr("disabled","disabled")
+                    $(".tickets").append("       <div data-filtertext='"+element.depaturestation+" "+element.date +"' class=\"ticket\">\n" +
+                        "            <div class=\"ticket-content\">\n" +
+                        "                <div class=\"ticket-left\">\n" +
+                        "                    <div style=\"margin: 10px\">\n" +
+                        "                      <div style=\"font-weight: bold\">Train no : "+ element.train +"</div>\n" +
+                        "                        <div style=\"font-size: 14px;font-style: italic;\"> "+ element.date +" "+ element.time + "</div>\n" +
+                        "                        <div style=\"font-size: 14px\">"+element.depaturestation+" <i class=\"fas fa-long-arrow-alt-right\"></i> "+ element.location_name+"</div>\n" +
+                        "\n" +
+                        "                    </div>\n" +
+                        "                </div>\n" +
+                        "                <div class=\"ticket-right\">\n" +
+                        "                    <a class=\"button-def ui-shadow ticket-button\" data-ajax=\"false\" href=\"#\">Book</a>\n" +
+                        "                </div>\n" +
+                        "            </div>\n" +
+                        "        </div>");
+                }
+            });
+
+        }
+    });
+
+    $(window).on('load', function() {
+        $("#mydate").datepicker().datepicker("setDate", new Date());
+        $("#filter-listt").filterable("refresh");
+
+
+        $("#filter-listt").filterable('option', 'filterCallback', checkedOrMatch);
+
+        $("#filter-menu").on("change", function(){
+
+            $("#filter-listt").filterable("refresh");
+        });
+    });
+
+    function checkedOrMatch(idx, searchValue) {
+        var ret = false;
+        var val = $("#filter-menu").val();
+
+
+        if (searchValue && searchValue.length > 0) {
+            searchValue = searchValue.toLowerCase();
+            var filttext = $(this).data("filtertext") || '';
+            filttext = filttext.toLowerCase();
+            console.log(searchValue)
+            console.log(filttext)
+            console.log(val)
+            console.log(filttext.indexOf(val))
+            if (filttext.indexOf(searchValue) < 0) {
+                ret = true; //filter this one out
+            } else  {
+                //found filter text now check language
+
+                console.log(filttext.indexOf(val))
+                if (  (filttext.indexOf(val) < 0)) {
+                    ret = true; //filter this one out
+                }
+            }
+        }
+        return ret;
+    }
+
+
+</script>
 </head>
-<body>
-<div data-role="page">
+<body >
+<div data-role="page" id="ticket-page">
     <div data-role="header"  class="head" data-position="fixed" style="position: fixed">
         <div   class="head" style="background-color: #FF8F77">
             <div class="back">
@@ -49,7 +170,23 @@
         </div>
     </div>
     <div style="padding: 25px;">
-
+        <div>
+            <form class="ticket-filter">
+                <p>From :</p>
+                    <select id="filter-menu" data-native-menu="false">
+                        <option value="dehiwala">Dehiwala</option>
+                        <option value="wellawatta">Wellawatta</option>
+                        <option value="moratuwa">Moratuwa</option>
+                        <option  value="lavania">Mt-lavania</option>
+                    </select>
+                <p>To :</p>
+                <input id="totext" type="text">
+                <p>Depature date :</p>
+                <input type="text" id="mydate" data-role="date"  data-inline="true" data-type="search" class="filter-in">
+            </form>
+        </div>
+    </div>
+    <div class="tickets" data-role="listview" data-filter="true" data-input=".filter-in" id="filter-listt">
     </div>
 
     <div class="nav-bar" data-position="fixed" data-role="footer" data-tap-toggle="false">
