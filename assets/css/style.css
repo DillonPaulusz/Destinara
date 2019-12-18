@@ -38,6 +38,28 @@
     background-size: 24px 27px;
 }
 
+
+#homeNav2:after {
+    background: url("../images/navbar/home.png") 50% 50% no-repeat;
+    background-size: 24px 26px;
+}
+
+#treasurehuntNav2:after {
+    background: url("../images/navbar/treasure hunt.png") 50% 50% no-repeat;
+    background-size: 24px 26px;
+}
+
+#leaderboardNav2:after {
+    background: url("../images/navbar/leaderboard.png") 50% 50% no-repeat;
+    background-size: 24px 26px;
+}
+
+#profileNav2:after {
+    background: url("../images/navbar/profile.png") 50% 50% no-repeat;
+    background-size: 24px 27px;
+}
+
+
 .head-logo {
     text-align: center;
     height: 68px;
@@ -493,11 +515,14 @@
     background-color: #f9f9f9;
     z-index: 999;
     position: fixed;
+    height: 200px;
     width: 100%;
+    top: 69px;
 }
 
 .profile {
    padding: 25px;
+    height: 114px;
 }
 
 .profile-pic {
@@ -663,53 +688,6 @@ height: 30px
     font-family: Source Sans Pro;
 }
 
-.leader-board{
-    padding: 15px;
-
-}
-
-.leader-board-item {
-    border: #E74B43;
-    border-style: solid;
-    border-radius: 20px;
-    height: 55px;
-    border-width: 1px;
-    box-shadow: 2px 2px 4px 1px #1d1d1d3b;
-    margin-bottom: 10px;
-}
-
-.leader-board-img img{
-    height: 35px;
-    border-width: 0.5px;
-    float: left;
-    border-style :solid;
-    border-color: #E74B43;
-    border-radius: 50%;
-    margin: 10px;
-}
-
-.leaderboard-pt{
-    float: right;
-}
-
-
-.lb-profile-pic {
-    float: left;
-    border-radius: 50%;
-    height: 80px;
-    width: 80px;
-    border-width: 1px;
-    box-shadow: 2px 2px 4px 1px #FF8F77;
-}
-
-.lb-profile-text{
-    font-family: Source Sans Pro;
-}
-
-.lb-profile-name {
-    font-size: 18px;
-    font-weight: bold;
-}
 
 /*SIGN UP STYLES*/
 
@@ -1324,43 +1302,6 @@ height: 30px
     transform: matrix(1,0,0,1,0,0);
 }
 
-.profile-header{
-    background-color: #f9f9f9;
-    z-index: 999;
-    position: fixed;
-    width: 100%;
-}
-
-.profile {
-   padding: 25px;
-}
-
-.profile-pic {
-    border-radius: 50%;
-    float: left;
-    height: 110px;
-    width: 110px;
-    border-width: 1px;
-    box-shadow: 2px 2px 4px 1px #FF8F77;
-    margin-right: 30px;
-    margin-left: 10px;
-
-}
-.profile-text{
-    margin-left: 40px ;
-    font-family: Source Sans Pro;
-}
-
-.profile-name {
-    font-size: 18px;
-    font-weight: bold;
-    line-height :0;
-}
-
-.profile-email{
-    font-size: 15px;
-    line-height :0.5;
-}
 
 .button-def{
     background-color:#ff7762;
@@ -1799,3 +1740,29 @@ height: 30px
     position: fixed;text-align: center;bottom: 15px;left: 0;right: 0
 }
 
+.rating-usr img{
+    height: 60px;
+    width: 60px;
+    float: left;
+    margin-right: 10px;
+}
+
+.rating-usr-name{
+    color: #777777;
+    font-family: "Source Sans Pro";
+    font-size: 20px;
+    font-style: italic;
+}
+
+.rate-date{
+    color: #777777;
+    font-family: "Source Sans Pro";
+    font-size: 15px;
+
+}
+
+.rating-comment{
+    font-family: "Source Sans Pro";
+    font-size: 13px;
+    font-style: italic;
+}

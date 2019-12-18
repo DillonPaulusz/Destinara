@@ -10,7 +10,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/js/fontawesome.min.js"></script>
     <link rel="stylesheet" href="../font-aw/css/all.css" />
 
-<!--    firebase-->
     <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-database.js"></script>
     <script src="../assets/js/firebaseInitialise.js"></script>
@@ -46,12 +45,24 @@
                         console.log("Destination ",selectedDestination);
                         $('.destination-img').hide().attr('src', element.imageurl).show();
                         $('.destination-desc').text(element.description);
+
+                        console.log(element.rating)
+
+
+                        var ul = document.getElementById("stars");
+                        var items = ul.getElementsByTagName("li");
+
+                        for (i = 0; i < element.rating; i++) {
+                            items[i].classList.add('selected')
+                        }
+
+
+
                         $("#bookticket").attr("href", "BookTickets.html?id="+element.destination_id);
                         $('.destination-name').append(element.name +  `<i class='far fa-heart' id="heartIt" style='float: right'></i>`);
                         $.each(element.activities, function(index, element) {
                             $.each(activies, function(i, item) {
                                 if(item.activity == element){
-                                    console.log(item.activity);
                                     $('.destination-activies').append("<div class='des-cont'><div class='definition-act-cont' onclick='myFunction("+ item.activity +")'><img src="+item.imageurl+" alt='Avatar' class='definition-act-img'>\n" +
                                         "<div class='definition-act-over'><div class='definition-act-text'>"+item.name +"</div></div></div></div>")
                                 }
@@ -82,6 +93,37 @@
             }
         });
     </script>
+
+    <style>
+
+        .text-center {text-align:center;}
+
+        /* Rating Star Widgets Style */
+        .rating-stars ul {
+            list-style-type:none;
+            padding:0;
+
+            -moz-user-select:none;
+            -webkit-user-select:none;
+        }
+        .rating-stars ul > li.star {
+            display:inline-block;
+
+        }
+
+        /* Idle State of the stars */
+        .rating-stars ul > li.star > i.fa {
+            font-size:2.5em; /* Change the size of the stars */
+            color:#ccc; /* Color on idle state */
+        }
+
+
+        /* Selected state of the stars */
+        .rating-stars ul > li.star.selected > i.fa {
+            color:#FF912C;
+        }
+
+    </style>
 </head>
 <body>
 <div data-role="page">
@@ -130,11 +172,46 @@
 
             <br>  <br>  <br>  <br>
             <div class="destination-reviews">
-                <h1>Reviews</h1>
+                <h1>Reviews
+
+                </h1>
+
+                <section class='rating-widget'>
+                    <div class='rating-stars text-center'>
+                        <ul id='stars'>
+                            <li class='star' title='Poor' data-value='1'>
+                                <i class='fa fa-star fa-fw'></i>
+                            </li>
+                            <li class='star' title='Fair' data-value='2'>
+                                <i class='fa fa-star fa-fw'></i>
+                            </li>
+                            <li class='star' title='Good' data-value='3'>
+                                <i class='fa fa-star fa-fw'></i>
+                            </li>
+                            <li class='star' title='Excellent' data-value='4'>
+                                <i class='fa fa-star fa-fw'></i>
+                            </li>
+                            <li class='star' title='WOW!!!' data-value='5'>
+                                <i class='fa fa-star fa-fw'></i>
+                            </li>
+                        </ul>
+                    </div>
+
+                </section>
+
+
+                <div class="rating-usr" style="padding: 15px">
+                    <div style="height: 60px">
+                        <img src="../assets/images/aboutus/dillon.png">
+                        <div class="rating-usr-name">Dillon</div>
+                        <div class="rate-date">2019/12/27</div>
+                    </div>
+                    <p class="rating-comment">There are several ways to get to the bridge, we got a tuk tuk up the back, a short walk up a very steep road and walked thru the tunnel to the bridge.</p>
+                </div>
+
             </div>
         </div>
-        <br>  <br>  <br>  <br><br>  <br>  <br>  <br>
-
+<br><br><br><br>
     </div>
 
     <div style="position: fixed;text-align: center;bottom: 51px;left: 0;right: 0;background-color: #f9f9f9 ">
