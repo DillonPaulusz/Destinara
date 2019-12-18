@@ -710,6 +710,8 @@ height: 30px
     font-weight: bold;
 }
 
+/*SIGN UP STYLES*/
+
 #signupTop {
 
 }
@@ -779,4 +781,52 @@ height: 30px
     border-radius: 50px 5px 5px 50px;
     position: fixed;
 }
+
+
+/*LOGIN STYLES*/
+
+
+#loginText {
+    font-family: "Source Sans Pro";
+    font-weight: bold;
+    font-size: 30px;
+    text-align: center;
+    margin-top: -2px;
+}
+
+#loginFormContainer {
+    box-shadow: 3px 3px 5px 6px #ccc;
+    border-radius: 5px 50px 50px 5px;
+    width: 60%;
+    height: 150px;
+    padding: 20px;
+    margin-bottom: -30px;
+    position: absolute;
+}
+
+.container .loginFormField {
+    height: 60px;
+    border: unset;
+    background: #f9f9f9;
+
+}
+
+.loginProceedButton {
+    position: fixed; /* or absolute */
+    margin-left: 240px;
+    top: 350px
+}
+
+#registerLink {
+    width: 100px;
+    height: 40px;
+    left: 0px;
+    bottom: 100px;
+    background-color: #FF7662;
+    color: #fff;
+    font-family: "Source Sans Pro";
+    border-radius: 5px 50px 50px 5px;
+    position: fixed;
+}
+
 

@@ -26,27 +26,24 @@
         <img class="logoImage" src="../assets/images/Logo_large.png">
     </div>
 
-    <p id="registerText">Sign Up</p>
+    <p id="loginText">Login</p>
 
-    <button onclick="location.href='login.html'" id="loginButton">Login</button>
 
-    <div id="formContainer">
-    <form>
-        <div class="container">
+    <div id="loginFormContainer">
+        <form>
+            <div class="container">
+                <input type="text" placeholder="Username" name="username" class="loginFormField" required>
 
-            <input type="email" placeholder="Email" name="email" class="formField" required>
+                <input type="password" placeholder="Enter Password" name="psw" class="loginFormField" required>
+            </div>
 
-            <input type="text" placeholder="Username" name="username" class="formField" required>
-
-            <input type="password" placeholder="Enter Password" name="psw" class="formField" required>
-
-            <input type="password" placeholder="Repeat Password" name="psw-repeat" class="formField" required>
-        </div>
-
-    </form>
-        <img src="../assets/images/registerButton.png" class="registerButton">
+        </form>
+        <img src="../assets/images/registerButton.png" class="loginProceedButton">
 
     </div>
+
+    <button onclick="location.href='SignUp.html'" id="registerLink">Sign Up</button>
+
 
 </div>
 
