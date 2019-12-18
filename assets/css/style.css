@@ -283,11 +283,11 @@
     margin-bottom: 10px;
 }
 
-.recommended-loc-img img {
-    height: 100px;
-    float: left;
-    margin: 10px;
-}
+/*.recommended-loc-img img {*/
+/*    height: 100px;*/
+/*    float: left;*/
+/*    margin: 10px;*/
+/*}*/
 
 .recommended-loc-text{
     margin: 15px;
@@ -1062,7 +1062,7 @@ height: 30px
 
 .recommended-loc {
     border: #E74B43;
-    border-style: solid;
+    /*border-style: solid;*/
     border-radius: 6px;
     min-height: 120px;
     border-width: 1px;
