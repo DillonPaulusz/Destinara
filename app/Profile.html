@@ -3,23 +3,53 @@
 <head>
     <title>Destinara | Profile</title>
     <meta content="width=device-width, initial-scale=1" name="viewport">
-    <link href="../assets/css/jquery.mobile-1.4.5.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="../assets/css/jquery.mobile-1.4.5.min.css"/>
     <link href="../assets/css/style.css" rel="stylesheet"/>
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-database.js"></script>
+    <script src="../assets/js/firebaseInitialise.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/js/fontawesome.min.js"></script>
+    <link rel="stylesheet" href="../font-aw/css/all.css" />
+
 </head>
 <body>
 <div data-role="page">
-    <div data-position="fixed" data-role="header">
+    <div data-position="fixed" data-role="header" data-tap-toggle="false">
         <div style="background-color: #FF8F77">
             <div class="head-logo">
                 <img src="../assets/images/header-logo.png">
+                <a href = "#mypanel" style="position: absolute ;top: 25%; right: 20px;height: 100%; color: #f9f9f9;"> <i class="fas fa-bars"></i></a>
+
             </div>
+
         </div>
     </div><!-- /header -->
     <div>
-
-
+        <div data-role="panel" id="mypanel" data-display="overlay">
+            <div data-position="fixed" class="sidebar">
+                <div class="sidebar-head">
+                    <img class="lb-profile-pic" src="../assets/images/profile/profile-pic.jpg">
+                    <div class="lb-profile-text">
+                        <p class="lb-profile-name" style="color: white !important;">Dillon Paulusz</p>
+                    </div>
+                </div>
+                <ul  data-role="listview">
+                    <li><a class="sidebar-item" href="cart.html">Cart</a></li>
+                    <li><a  class="sidebar-item" href="AboutUs.html">About us</a></li>
+                </ul>
+                <div class="sidebar-logout">
+                    <div style="margin: 10px">
+                        <a class="button-def ui-shadow" data-ajax="false" href="#">logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div data-role="tabs" id="tabs">
             <div class="profile-header">
                 <div class="profile">
@@ -57,7 +87,7 @@
                             </div>
                             <div class="destination-list-text">
 
-                                <span>Madakalapuwa</span>
+                                <span>Nuwara eliya</span>
                             </div>
                         </div>
                         <div class="destination-list-item">
@@ -66,34 +96,7 @@
                             </div>
                             <div class="destination-list-text">
 
-                                <span>Madakalapuwa</span>
-                            </div>
-                        </div>
-                        <div class="destination-list-item">
-                            <div class="destination-list-img">
-                                <img src="../assets/images/destinations/madakalapuwa.png">
-                            </div>
-                            <div class="destination-list-text">
-
-                                <span>Madakalapuwa</span>
-                            </div>
-                        </div>
-                        <div class="destination-list-item">
-                            <div class="destination-list-img">
-                                <img src="../assets/images/destinations/madakalapuwa.png">
-                            </div>
-                            <div class="destination-list-text">
-
-                                <span>Madakalapuwa</span>
-                            </div>
-                        </div>
-                        <div class="destination-list-item">
-                            <div class="destination-list-img">
-                                <img src="../assets/images/destinations/madakalapuwa.png">
-                            </div>
-                            <div class="destination-list-text">
-
-                                <span>Madakalapuwa</span>
+                                <span>kandy tooth temple</span>
                             </div>
                         </div>
                         <div class="destination-list-item">
@@ -120,65 +123,12 @@
             </div>
             <div id="two"  style="margin-top: 200px">
                 <div style="padding: 10px">
-                    <a class="button-def ui-shadow" href="#" style="margin-bottom: 15px"> Email list</a>
-                    <div class="destination-list">
-                        <div class="destination-list">
-                            <div class="destination-list-item">
-                                <div class="destination-list-img">
-                                    <img src="../assets/images/destinations/madakalapuwa.png">
-                                </div>
-                                <div class="destination-list-text">
-                                    <img src="../assets/images/Rating_ca.png">
-                                    <span>Madakalapuwa</span>
-                                </div>
-                            </div>
-                            <div class="destination-list-item">
-                                <div class="destination-list-img">
-                                    <img src="../assets/images/destinations/madakalapuwa.png">
-                                </div>
-                                <div class="destination-list-text">
-                                    <img src="../assets/images/Rating_ca.png">
-                                    <span>Madakalapuwa</span>
-                                </div>
-                            </div>
-                            <div class="destination-list-item">
-                                <div class="destination-list-img">
-                                    <img src="../assets/images/destinations/madakalapuwa.png">
-                                </div>
-                                <div class="destination-list-text">
-                                    <img src="../assets/images/Rating_ca.png">
-                                    <span>Madakalapuwa</span>
-                                </div>
-                            </div>
-                            <div class="destination-list-item">
-                                <div class="destination-list-img">
-                                    <img src="../assets/images/destinations/madakalapuwa.png">
-                                </div>
-                                <div class="destination-list-text">
-                                    <img src="../assets/images/Rating_ca.png">
-                                    <span>Madakalapuwa</span>
-                                </div>
-                            </div>
-                            <div class="destination-list-item">
-                                <div class="destination-list-img">
-                                    <img src="../assets/images/destinations/madakalapuwa.png">
-                                </div>
-                                <div class="destination-list-text">
-                                    <img src="../assets/images/Rating_ca.png">
-                                    <span>Madakalapuwa</span>
-                                </div>
-                            </div>
-                            <div class="destination-list-item">
-                                <div class="destination-list-img">
-                                    <img src="../assets/images/destinations/madakalapuwa.png">
-                                </div>
-                                <div class="destination-list-text">
-                                    <img src="../assets/images/Rating_ca.png">
-                                    <span>Madakalapuwa</span>
-                                </div>
-                            </div>
+                    <a class="button-def ui-shadow" id="emailListButton" href="#" style="margin-bottom: 15px"> Email list</a>
+<!--                    <div class="destination-list">-->
+                        <div class="destination-list-fav">
+
                         </div>
-                    </div>
+<!--                    </div>-->
                 </div>
 
             </div>
@@ -198,4 +148,75 @@
     </div>
 </div>
 </body>
+<script>
+    $(document).ready(function(){
+        let favData = [];
+        let favDataHardCoded = [
+            {
+                "destinationImg": "../assets/images/destinations/madakalapuwa.png",
+                "rating": "4.5",
+                "location": "Kandy"
+            },
+            {
+                "destinationImg": "../assets/images/destinations/madakalapuwa.png",
+                "rating": "3",
+                "location": "NuwaraEliya"
+            },
+            {
+                "destinationImg": "../assets/images/destinations/madakalapuwa.png",
+                "rating": "4.5",
+                "location": "Madakalapuwa"
+            },
+            {
+                "destinationImg": "../assets/images/destinations/madakalapuwa.png",
+                "rating": "5",
+                "location": "Jaffna"
+            },
+];
+           function getFavListFromDB(){
+           return  firebase.database().ref('favourites/user1').once('value').then(function(snapshot) {
+
+                   snapshot.forEach(function(childSnapshot) {
+                       // var childKey = childSnapshot.key;
+                       var childData = childSnapshot.val();
+                       console.log("came data",childData);
+                       favData.push(childData['location']);
+                       $(".destination-list-fav").append(`<div class="destination-list-item">
+                                <div class="destination-list-img">
+                                    <img src="${childData['destinationImg']}">
+                                </div>
+                                <div class="destination-list-text">
+<!--                                    <img src="../assets/images/Rating_ca.png">-->
+
+                                    <span>${childData['location']}</span>
+                                    <i  style="color: #ff7761" class="fa fa-heart"></i>
+                                </div>
+                            </div>`);
+                       // ...
+                   });
+               });
+        }
+        getFavListFromDB();
+
+           $("#emailListButton").on("click",function () {
+               let list = "";
+               console.log(favData);
+               $.each(favData, function( index, value ) {
+                    list = list + `${index+1} . ${value} \n`;
+               });
+               console.log(list);
+               Email.send({
+                   Host: "smtp.gmail.com",
+                   Username : "destinarauiux@gmail.com",
+                   Password : "destinara123",
+                   To : 'destinarauiux@gmail.com',
+                   From : "destinarauiux@gmail.com",
+                   Subject : "You favourite List from destinara!",
+                   Body : list,
+               }).then(
+                   message => alert("mail sent successfully")
+               );
+           });
+    });
+</script>
 </html>

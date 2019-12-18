@@ -4670,7 +4670,7 @@ html .ui-field-contain > label + .ui-flipswitch, html .ui-popup .ui-field-contai
     min-height: 100%;
     max-height: none;
     border-width: 0;
-    position: absolute;
+    position: fixed;
     top: 0;
     display: block
 }
@@ -4905,3 +4905,4 @@ html .ui-field-contain > label + .ui-flipswitch, html .ui-popup .ui-field-contai
     position: relative;
     padding: .2em
 }
+

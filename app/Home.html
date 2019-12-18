@@ -3,28 +3,57 @@
 <head>
     <title>Destinara | Home</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"/>
     <link rel="stylesheet" href="../assets/css/style.css"/>
+    <link rel="stylesheet" href="../assets/css/jquery.mobile-1.4.5.min.css"/>
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-    <style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/js/fontawesome.min.js"></script>
+    <link rel="stylesheet" href="../font-aw/css/all.css"/>
+    <script src="../font-aw/js/all.js"></script>
 
+    <style>
 
     </style>
 </head>
 <body>
+
+
 <div data-role="page">
     <div data-role="header" data-position="fixed" data-tap-toggle="false">
         <div style="background-color: #FF8F77">
             <div class="head-logo">
                 <img src="../assets/images/header-logo.png">
+                <a href="#mypanel" style="position: absolute ;top: 25%; right: 20px;height: 100%; color: #f9f9f9;"> <i
+                        class="fas fa-bars"></i></a>
             </div>
         </div>
     </div><!-- /header -->
-     <div>
+    <div data-role="panel" id="mypanel" data-display="overlay">
+        <div data-position="fixed" class="sidebar">
+            <div class="sidebar-head">
+                <img class="lb-profile-pic" src="../assets/images/profile/profile-pic.jpg">
+                <div class="lb-profile-text">
+                    <p class="lb-profile-name" style="color: white !important;">Dillon Paulusz</p>
+                </div>
+            </div>
+            <ul data-role="listview">
+                <li><a class="sidebar-item" href="cart.html">Cart</a></li>
+                <li><a class="sidebar-item" href="AboutUs.html">About us</a></li>
+            </ul>
+            <div class="sidebar-logout">
+                <div style="margin: 10px">
+                    <a class="button-def ui-shadow" data-ajax="false" href="#">logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div>
         <div id="Group_11">
             <svg class="Rectangle_7">
-                <rect fill="rgba(255,255,255,1)" stroke="rgba(241,241,241,1)" stroke-width="1px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" id="Rectangle_7" rx="17" ry="17" x="0" y="0" width="311" height="34">
+                <rect fill="rgba(255,255,255,1)" stroke="rgba(241,241,241,1)" stroke-width="1px" stroke-linejoin="miter"
+                      stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" id="Rectangle_7" rx="17"
+                      ry="17" x="0" y="0" width="311" height="34">
 
                 </rect>
             </svg>
@@ -34,69 +63,89 @@
                     </ellipse>
                 </svg>
                 <svg class="mic" viewBox="949 284.9 12.614 17.131">
-                    <path fill="rgba(255,255,255,1)" id="mic" d="M 957.9234619140625 292.9971923828125 L 957.9234619140625 287.5990905761719 C 957.9234619140625 286.1118469238281 956.711669921875 284.9000244140625 955.224365234375 284.9000244140625 C 953.7371826171875 284.9000244140625 952.5252685546875 286.1118469238281 952.5252685546875 287.5990905761719 L 952.5252685546875 292.9971923828125 C 952.5252685546875 294.4844360351563 953.7371826171875 295.6962280273438 955.224365234375 295.6962280273438 C 956.711669921875 295.6962280273438 957.9234619140625 294.4844055175781 957.9234619140625 292.9971923828125 Z M 960.0166015625 292.9971923828125 C 960.0166015625 295.6962280273438 957.7581787109375 297.5690307617188 955.279541015625 297.5690307617188 C 952.80078125 297.5690307617188 950.5423583984375 295.6962280273438 950.5423583984375 292.9971923828125 L 949.0001220703125 292.9971923828125 C 949.0001220703125 296.0818176269531 951.4237060546875 298.6156311035156 954.398193359375 299.0562744140625 L 954.398193359375 302.03076171875 L 956.2159423828125 302.03076171875 L 956.2159423828125 299.0562744140625 C 959.13525390625 298.6156311035156 961.614013671875 296.0818176269531 961.614013671875 292.9971923828125 L 960.0166015625 292.9971923828125 L 960.0166015625 292.9971923828125 Z">
+                    <path fill="rgba(255,255,255,1)" id="mic"
+                          d="M 957.9234619140625 292.9971923828125 L 957.9234619140625 287.5990905761719 C 957.9234619140625 286.1118469238281 956.711669921875 284.9000244140625 955.224365234375 284.9000244140625 C 953.7371826171875 284.9000244140625 952.5252685546875 286.1118469238281 952.5252685546875 287.5990905761719 L 952.5252685546875 292.9971923828125 C 952.5252685546875 294.4844360351563 953.7371826171875 295.6962280273438 955.224365234375 295.6962280273438 C 956.711669921875 295.6962280273438 957.9234619140625 294.4844055175781 957.9234619140625 292.9971923828125 Z M 960.0166015625 292.9971923828125 C 960.0166015625 295.6962280273438 957.7581787109375 297.5690307617188 955.279541015625 297.5690307617188 C 952.80078125 297.5690307617188 950.5423583984375 295.6962280273438 950.5423583984375 292.9971923828125 L 949.0001220703125 292.9971923828125 C 949.0001220703125 296.0818176269531 951.4237060546875 298.6156311035156 954.398193359375 299.0562744140625 L 954.398193359375 302.03076171875 L 956.2159423828125 302.03076171875 L 956.2159423828125 299.0562744140625 C 959.13525390625 298.6156311035156 961.614013671875 296.0818176269531 961.614013671875 292.9971923828125 L 960.0166015625 292.9971923828125 L 960.0166015625 292.9971923828125 Z">
                     </path>
                 </svg>
             </div>
             <div id="Search_Button">
                 <svg class="Ellipse">
-                    <ellipse fill="rgba(255,143,127,1)" id="Ellipse" rx="22.033096313476562" ry="22.033096313476562" cx="22.033096313476562" cy="22.033096313476562">
+                    <ellipse fill="rgba(255,143,127,1)" id="Ellipse" rx="22.033096313476562" ry="22.033096313476562"
+                             cx="22.033096313476562" cy="22.033096313476562">
                     </ellipse>
                 </svg>
                 <svg class="Shape" viewBox="169 284.5 17.076 17.021">
-                    <path fill="rgba(255,255,255,1)" id="Shape" d="M 181.2283630371094 295.2411499023438 L 180.4572143554688 295.2411499023438 L 180.1817932128906 294.9657287597656 C 181.1181945800781 293.8640747070313 181.72412109375 292.4319152832031 181.72412109375 290.8345336914063 C 181.72412109375 287.3092346191406 178.8598175048828 284.5 175.3896026611328 284.5 C 171.9193878173828 284.5 169 287.3643188476563 169 290.8345336914063 C 169 294.3047485351563 171.8643035888672 297.1690368652344 175.3345184326172 297.1690368652344 C 176.9319152832031 297.1690368652344 178.3640747070313 296.6182250976563 179.4657287597656 295.626708984375 L 179.7411346435547 295.9021606445313 L 179.7411346435547 296.6732788085938 L 184.6434936523438 301.5205688476563 L 186.0756530761719 300.0884094238281 L 181.2283630371094 295.2411499023438 L 181.2283630371094 295.2411499023438 Z M 175.3345184326172 295.2411499023438 C 172.910888671875 295.2411499023438 170.9278869628906 293.2581787109375 170.9278869628906 290.8345336914063 C 170.9278869628906 288.410888671875 172.910888671875 286.4279174804688 175.3345184326172 286.4279174804688 C 177.7581481933594 286.4279174804688 179.7411346435547 288.410888671875 179.7411346435547 290.8345336914063 C 179.7411346435547 293.2581787109375 177.7581481933594 295.2411499023438 175.3345184326172 295.2411499023438 L 175.3345184326172 295.2411499023438 Z">
+                    <path fill="rgba(255,255,255,1)" id="Shape"
+                          d="M 181.2283630371094 295.2411499023438 L 180.4572143554688 295.2411499023438 L 180.1817932128906 294.9657287597656 C 181.1181945800781 293.8640747070313 181.72412109375 292.4319152832031 181.72412109375 290.8345336914063 C 181.72412109375 287.3092346191406 178.8598175048828 284.5 175.3896026611328 284.5 C 171.9193878173828 284.5 169 287.3643188476563 169 290.8345336914063 C 169 294.3047485351563 171.8643035888672 297.1690368652344 175.3345184326172 297.1690368652344 C 176.9319152832031 297.1690368652344 178.3640747070313 296.6182250976563 179.4657287597656 295.626708984375 L 179.7411346435547 295.9021606445313 L 179.7411346435547 296.6732788085938 L 184.6434936523438 301.5205688476563 L 186.0756530761719 300.0884094238281 L 181.2283630371094 295.2411499023438 L 181.2283630371094 295.2411499023438 Z M 175.3345184326172 295.2411499023438 C 172.910888671875 295.2411499023438 170.9278869628906 293.2581787109375 170.9278869628906 290.8345336914063 C 170.9278869628906 288.410888671875 172.910888671875 286.4279174804688 175.3345184326172 286.4279174804688 C 177.7581481933594 286.4279174804688 179.7411346435547 288.410888671875 179.7411346435547 290.8345336914063 C 179.7411346435547 293.2581787109375 177.7581481933594 295.2411499023438 175.3345184326172 295.2411499023438 L 175.3345184326172 295.2411499023438 Z">
                     </path>
                 </svg>
             </div>
             <div id="options_bg">
                 <svg class="path_14_2_" viewBox="144 270 38.558 33.05">
-                    <path fill="rgba(255,143,127,1)" id="path_14_2_" d="M 160.5248413085938 270 L 182.5579223632813 270 L 182.5579223632813 303.0496520996094 L 160.5248413085938 303.0496520996094 C 151.3810882568359 303.0496520996094 144 295.6685791015625 144 286.5248413085938 L 144 286.5248413085938 C 144 277.381103515625 151.3810882568359 270 160.5248413085938 270 Z">
+                    <path fill="rgba(255,143,127,1)" id="path_14_2_"
+                          d="M 160.5248413085938 270 L 182.5579223632813 270 L 182.5579223632813 303.0496520996094 L 160.5248413085938 303.0496520996094 C 151.3810882568359 303.0496520996094 144 295.6685791015625 144 286.5248413085938 L 144 286.5248413085938 C 144 277.381103515625 151.3810882568359 270 160.5248413085938 270 Z">
                     </path>
                 </svg>
             </div>
         </div>
         <div id="options_icon">
             <svg class="Path" viewBox="156 109 12.669 2">
-                <path fill="transparent" stroke="rgba(255,255,255,1)" stroke-width="2px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" id="Path" d="M 156 109 L 168.6690368652344 109">
+                <path fill="transparent" stroke="rgba(255,255,255,1)" stroke-width="2px" stroke-linejoin="miter"
+                      stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" id="Path"
+                      d="M 156 109 L 168.6690368652344 109">
                 </path>
             </svg>
             <svg class="Path_c" viewBox="173 119 3.305 2">
-                <path fill="transparent" stroke="rgba(255,255,255,1)" stroke-width="2px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" id="Path_c" d="M 173 119 L 176.3049621582031 119">
+                <path fill="transparent" stroke="rgba(255,255,255,1)" stroke-width="2px" stroke-linejoin="miter"
+                      stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" id="Path_c"
+                      d="M 173 119 L 176.3049621582031 119">
                 </path>
             </svg>
             <svg class="Path_da" viewBox="163 129 8.813 0.055">
-                <path fill="transparent" stroke="rgba(255,255,255,1)" stroke-width="2px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" id="Path_da" d="M 163 129.0550842285156 L 171.8132476806641 129">
+                <path fill="transparent" stroke="rgba(255,255,255,1)" stroke-width="2px" stroke-linejoin="miter"
+                      stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" id="Path_da"
+                      d="M 163 129.0550842285156 L 171.8132476806641 129">
                 </path>
             </svg>
             <svg class="Oval">
-                <ellipse fill="transparent" stroke="rgba(255,255,255,1)" stroke-width="2px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" id="Oval" rx="2" ry="2" cx="2" cy="2">
+                <ellipse fill="transparent" stroke="rgba(255,255,255,1)" stroke-width="2px" stroke-linejoin="miter"
+                         stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" id="Oval" rx="2" ry="2"
+                         cx="2" cy="2">
                 </ellipse>
             </svg>
             <svg class="Oval_db">
-                <ellipse fill="transparent" stroke="rgba(255,255,255,1)" stroke-width="2px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" id="Oval_db" rx="2.5" ry="2" cx="2.5" cy="2">
+                <ellipse fill="transparent" stroke="rgba(255,255,255,1)" stroke-width="2px" stroke-linejoin="miter"
+                         stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" id="Oval_db" rx="2.5" ry="2"
+                         cx="2.5" cy="2">
                 </ellipse>
             </svg>
             <svg class="Oval_dc">
-                <ellipse fill="transparent" stroke="rgba(255,255,255,1)" stroke-width="2px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" id="Oval_dc" rx="2" ry="2" cx="2" cy="2">
+                <ellipse fill="transparent" stroke="rgba(255,255,255,1)" stroke-width="2px" stroke-linejoin="miter"
+                         stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" id="Oval_dc" rx="2" ry="2"
+                         cx="2" cy="2">
                 </ellipse>
             </svg>
             <svg class="Path_dd" viewBox="144 109 2.148 2">
-                <path fill="transparent" stroke="rgba(255,255,255,1)" stroke-width="2px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" id="Path_dd" d="M 146.1482238769531 109 L 144 109">
+                <path fill="transparent" stroke="rgba(255,255,255,1)" stroke-width="2px" stroke-linejoin="miter"
+                      stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" id="Path_dd"
+                      d="M 146.1482238769531 109 L 144 109">
                 </path>
             </svg>
             <svg class="Path_de" viewBox="144 119 11.622 2">
-                <path fill="transparent" stroke="rgba(255,255,255,1)" stroke-width="2px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" id="Path_de" d="M 155.6224670410156 119 L 144 119">
+                <path fill="transparent" stroke="rgba(255,255,255,1)" stroke-width="2px" stroke-linejoin="miter"
+                      stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" id="Path_de"
+                      d="M 155.6224670410156 119 L 144 119">
                 </path>
             </svg>
             <svg class="Path_df" viewBox="144 129 6.059 2">
-                <path fill="transparent" stroke="rgba(255,255,255,1)" stroke-width="2px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" id="Path_df" d="M 150.0591125488281 129 L 144 129">
+                <path fill="transparent" stroke="rgba(255,255,255,1)" stroke-width="2px" stroke-linejoin="miter"
+                      stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" id="Path_df"
+                      d="M 150.0591125488281 129 L 144 129">
                 </path>
             </svg>
         </div>
     </div>
     <br><br><br>
-
-
     <div class="heading-text">
 		<span>
 			Popular locations
@@ -105,22 +154,23 @@
     <div class="jcarousel-wrapper">
         <div class="jcarousel">
             <ul>
-                <li class="carousel-li">
-                    <img src="../assets/images/popular-dest/ella.png"  alt="">
+
+                <li class="carousel-li" onclick="DestinationPage(5)">
+                    <img src="../assets/images/popular-dest/ella.png" alt="">
                     <div class="overlay">
                         <span class="carousel-text">Nine arches bridge Ella</span>
                     </div>
                 </li>
-                <li class="carousel-li">
-                    <img src="../assets/images/popular-dest/galle_fort.png"  alt="">
+                <li class="carousel-li" onclick="DestinationPage(7)">
+                    <img src="../assets/images/popular-dest/galle_fort.png" alt="">
                     <div class="overlay">
                         <span class="carousel-text">
                          Galle fort
                        </span>
                     </div>
                 </li>
-                <li class="carousel-li">
-                    <img src="../assets/images/popular-dest/Temple_of_the_Tooth_Sri_Lanka_di@2x.png"  alt="">
+                <li class="carousel-li" onclick="DestinationPage(6)">
+                    <img src="../assets/images/popular-dest/Temple_of_the_Tooth_Sri_Lanka_di@2x.png" alt="">
                     <div class="overlay">
                         <span class="carousel-text">
                          Tooth temple Kandy
@@ -140,7 +190,7 @@
 		</span>
     </div>
     <div class="recommended">
-        <div class="recommended-loc">
+        <div class="recommended-loc" onclick="DestinationPage(2)">
             <div class="recommended-loc-img">
                 <img src="../assets/images/destinations/badulla.png">
             </div>
@@ -151,53 +201,48 @@
                     capital city of Uva Province and the Badulla District.</p>
             </div>
         </div>
-        <div class="recommended-loc">
+        <div class="recommended-loc" onclick="DestinationPage(3)">
             <div class="recommended-loc-img">
                 <img src="../assets/images/destinations/nanu-oya.png">
             </div>
             <div class="recommended-loc-text">
                 <img src="../assets/images/Rating_ca.png">
                 <span>Nanu oya</span>
-                <p>Nanu Oya is a village in Sri Lanka, named after the Nanu Oya river. It is located within Nuwara Eliya District in the Central Province and is situated approximately 8 km away from Nuwara Eliya.</p>
+                <p>Nanu Oya is a village in Sri Lanka, named after the Nanu Oya river. It is located within Nuwara Eliya
+                    District in the Central Province and is situated approximately 8 km away from Nuwara Eliya.</p>
             </div>
         </div>
 
-        <div class="recommended-loc">
+        <div class="recommended-loc" onclick="DestinationPage(1)">
             <div class="recommended-loc-img">
                 <img src="../assets/images/destinations/madakalapuwa.png">
             </div>
             <div class="recommended-loc-text">
-                <img src="../assets/images/Rating_ca.png">
+                  <span class="fa-layers fa-fw rec-right">
+                        <i class="fas fa-star" style="color: gold"></i>
+                        <span class="fa-layers-text fa-inverse" data-fa-transform="shrink-8 down-3" style="font-weight:900">5</span>
+                     </span>
                 <span>Madakalapuwa</span>
-                <p>Batticaloa is a major city in the Eastern Province, Sri Lanka, and its former capital. It is the administrative capital of the Batticaloa District. The city is the seat of the Eastern University of Sri Lanka.</p>
+                <p>Batticaloa is a major city in the Eastern Province, Sri Lanka, and its former capital. It is the
+                    administrative capital of the Batticaloa District. The city is the seat of the Eastern University of
+                    Sri Lanka.</p>
             </div>
 
         </div>
 
-        <div class="recommended-loc">
+        <div class="recommended-loc" onclick="DestinationPage(4)">
             <div class="recommended-loc-img">
                 <img src="../assets/images/destinations/Mirissa.png">
             </div>
             <div class="recommended-loc-text">
                 <img src="../assets/images/Rating_ca.png">
                 <span>Mirissa</span>
-                <p>Mirissa is a small town on the south coast of Sri Lanka, located in the Matara District of the Southern Province. It is approximately 150 kilometres south of Colombo.</p>
+                <p>Mirissa is a small town on the south coast of Sri Lanka, located in the Matara District of the
+                    Southern Province. It is approximately 150 kilometres south of Colombo.</p>
             </div>
         </div>
-
-        <div class="recommended-loc">
-            <div class="recommended-loc-img">
-                <img src="../assets/images/destinations/kandy-tooth-relic.png">
-            </div>
-            <div class="recommended-loc-text">
-                <img src="../assets/images/Rating_ca.png">
-                <span>Tooth relic</span>
-                <p>Sri Dalada Maligawa or the Temple of the Sacred Tooth Relic is a Buddhist temple in the city of Kandy, Sri Lanka. It is located in the royal palace complex of the former Kingdom of Kandy.</p>
-            </div>
-        </div>
-        <a  href="destinations-list.html" data-ajax="false">view all locations</a>
+        <a href="destinations-list.html" data-ajax="false">view all locations</a>
     </div>
-
     <div class="heading-text">
 		<span>
 			Activities
@@ -259,8 +304,9 @@
     <div data-role="footer" data-position="fixed" class="nav-bar" data-tap-toggle="false">
         <div data-role="navbar" class="nav-bar">
             <ul>
-                <li><a href="Home.html" class="ui-btn-active" id="homeNav" data-icon="custom" data-ajax="false"  data-transition="slide"></a></li>
-                <li><a href="Treasure-hunt.html" id="treasurehuntNav" data-icon="custom" data-ajax="false" ></a></li>
+                <li><a href="Home.html" class="ui-btn-active" id="homeNav" data-icon="custom" data-ajax="false"
+                       data-transition="slide"></a></li>
+                <li><a href="Treasure-hunt.html" id="treasurehuntNav" data-icon="custom" data-ajax="false"></a></li>
                 <li><a href="Leaderboard.html" id="leaderboardNav" data-icon="custom" data-ajax="false"></a></li>
                 <li><a href="Profile.html" id="profileNav" data-icon="custom" data-ajax="false"></a></li>
             </ul>

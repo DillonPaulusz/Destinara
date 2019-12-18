@@ -3,33 +3,127 @@
 <head>
     <title>Destinara | Treasure</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
-    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/jquery.mobile-1.4.5.min.css"/>
+    <link href="../assets/css/style.css" rel="stylesheet"/>
+    <link href="../assets/css/jquery-ui.css" rel="stylesheet"/>
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/js/fontawesome.min.js"></script>
+    <link rel="stylesheet" href="../font-aw/css/all.css" />
+
+    <style>
+        #content {
+            padding: 0;
+            position: relative !important;
+            height: 80%;
+            right: 0;
+            left: 0 !important;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            $("#progressbar2").progressbar({
+                value: 26
+            });
+            setTimeout(function () {
+                // This is the minimum zoom level that we'll allow
+                var minZoomLevel = 12;
+
+
+                if (navigator.geolocation) {
+
+                    // Get current position
+                    navigator.geolocation.getCurrentPosition(function (position) {
+
+                        var map = new google.maps.Map(document.getElementById('map_canvas'), {
+                            zoom: minZoomLevel,
+                            center: new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
+                            mapTypeId: google.maps.MapTypeId.ROADMAP
+                        });
+
+                        new google.maps.Marker({
+                            position: {
+                                lat: position.coords.latitude,
+                                lng: position.coords.longitude
+                            },
+                            map: map
+                        });
+                    })
+                }
+            }, 1);
+        });
+    </script>
 </head>
 <body>
-<div data-role="page">
-    <div data-role="header"   data-position="fixed">
-        <div  style="background-color: #FF8F77">
+<div data-role="page" id="index">
+    <div data-role="header" data-position="fixed">
+        <div style="background-color: #FF8F77">
             <div class="head-logo">
                 <img src="../assets/images/header-logo.png">
+
+                <a href = "#mypanel" style="position: absolute ;top: 25%; right: 20px;height: 100%; color: #f9f9f9;"> <i class="fas fa-bars"></i></a>
             </div>
+
         </div>
     </div><!-- /header -->
+    <div data-role="panel" id="mypanel" data-display="overlay">
+        <div data-position="fixed" class="sidebar">
+            <div class="sidebar-head">
+                <img class="lb-profile-pic" src="../assets/images/profile/profile-pic.jpg">
+                <div class="lb-profile-text">
+                    <p class="lb-profile-name" style="color: white !important;">Dillon Paulusz</p>
+                </div>
+            </div>
+            <ul  data-role="listview">
+                <li><a class="sidebar-item" href="cart.html">Cart</a></li>
+                <li><a  class="sidebar-item" href="AboutUs.html">About us</a></li>
+            </ul>
+            <div class="sidebar-logout">
+                <div style="margin: 10px">
+                    <a class="button-def ui-shadow" data-ajax="false" href="#">logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <div style="position: absolute;top: 75px;bottom: 50px;left: 0;right: 0">
+        <div style="padding: 15px">
+            <div style="font-size: 10px">
+                <div style="float: left"> gold</div>
+                <div style="float: right">platinum</div>
+            </div>
+            <br>
+            <div id="progressbar2" style="margin-bottom: 20px"></div>
+        </div>
+        <div style="position: absolute;top: 94px;left: 0;bottom: 0;right: 0;">
+            <div data-role="content" id="content">
+                <div id="map_canvas" style="height:100%"></div>
+            </div>
+            <div style="text-align: center;height: 20%">
+                <div style="position: relative;top: 28%">
+                    <a class="button-def ui-shadow" href="GameRules.html" style="margin-right: 8px" data-ajax="false"> Game
+                        rules</a>
+                    <a class="button-def ui-shadow" href="Challenges.html" style="margin-left: 8px" data-ajax="false">
+                        Challenges</a>
+                </div>
 
+            </div>
+        </div>
+    </div>
 
     <div data-role="footer" data-position="fixed" class="nav-bar" data-tap-toggle="false">
         <div data-role="navbar" class="nav-bar">
             <ul>
-                <li><a href="Home.html" id="homeNav" data-icon="custom" data-ajax="false"   ></a></li>
-                <li><a href="Treasure-hunt.html"  class="ui-btn-active" id="treasurehuntNav" data-icon="custom" data-ajax="false"   ></a></li>
-                <li><a href="Leaderboard.html" id="leaderboardNav" data-icon="custom" data-ajax="false"   ></a></li>
-                <li><a href="Profile.html" id="profileNav" data-icon="custom" data-ajax="false"   ></a></li>
+                <li><a href="Home.html" id="homeNav" data-icon="custom" data-ajax="false"></a></li>
+                <li><a href="Treasure-hunt.html" class="ui-btn-active" id="treasurehuntNav" data-icon="custom"
+                       data-ajax="false"></a></li>
+                <li><a href="Leaderboard.html" id="leaderboardNav" data-icon="custom" data-ajax="false"></a></li>
+                <li><a href="Profile.html" id="profileNav" data-icon="custom" data-ajax="false"></a></li>
             </ul>
         </div>
     </div>
 </div>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBcdWFYIl9uTihRMCyNjBaqfGnYyAZDY1o"></script>
 </body>
 </html>

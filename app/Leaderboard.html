@@ -3,11 +3,14 @@
 <head>
     <title>Destinara | Leaderboard</title>
     <meta content="width=device-width, initial-scale=1" name="viewport">
-    <link href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="../assets/css/jquery.mobile-1.4.5.min.css"/>
     <link href="../assets/css/style.css" rel="stylesheet"/>
     <link href="../assets/css/jquery-ui.css" rel="stylesheet"/>
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/js/fontawesome.min.js"></script>
+    <link rel="stylesheet" href="../font-aw/css/all.css" />
+
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
     <script>
@@ -40,7 +43,7 @@
                     }
 
                     $( "#progressbar" ).progressbar({
-                        value: element.points
+                        value: 26
                     });
 
                 });
@@ -56,14 +59,38 @@
         <div style="background-color: #FF8F77">
             <div class="head-logo">
                 <img src="../assets/images/header-logo.png">
+                <a href = "#mypanel" style="position: absolute ;top: 25%; right: 20px;height: 100%; color: #f9f9f9;"> <i class="fas fa-bars"></i></a>
+
             </div>
+
         </div>
     </div><!-- /header -->
+    <div data-role="panel" id="mypanel" data-display="overlay">
+        <div data-position="fixed" class="sidebar">
+            <div class="sidebar-head">
+                <img class="lb-profile-pic" src="../assets/images/profile/profile-pic.jpg">
+                <div class="lb-profile-text">
+                    <p class="lb-profile-name" style="color: white !important;">Dillon Paulusz</p>
+                </div>
+            </div>
+            <ul  data-role="listview">
+                <li><a class="sidebar-item" href="cart.html">Cart</a></li>
+                <li><a  class="sidebar-item" href="AboutUs.html">About us</a></li>
+            </ul>
+            <div class="sidebar-logout">
+                <div style="margin: 10px">
+                    <a class="button-def ui-shadow" data-ajax="false" href="#">logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="profile-header">
 
 
-        <div class="profile" style="height: 150px;">
+        <div class="profile" style="height: 138px;">
+            <div style="font-size: 10px"><div style="float: left"> gold </div><div style="float: right">platinum</div></div>
+            <br>
             <div id="progressbar" style="margin-bottom: 20px"></div>
             <div style="height: 85px;text-align: center;margin-top: 20px">
                 <img class="lb-profile-pic" src="../assets/images/profile/profile-pic.jpg">
@@ -74,14 +101,11 @@
                 </div>
             </div>
             <hr>
-            <div class="heading-text" >
-                    Rankings
-            </div>
         </div>
 
     </div>
 
-    <div class="leader-board" style="margin-top: 200px">
+    <div class="leader-board" style="margin-top: 180px">
     </div>
 
     <div class="nav-bar" data-position="fixed" data-role="footer" data-tap-toggle="false">
