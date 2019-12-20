@@ -14,6 +14,10 @@
 	<script src="threex/threex-armarkercontrols.js"></script>
 	<link href="../assets/css/style.css" rel="stylesheet"/>
 
+	<script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-database.js"></script>
+	<script src="../assets/js/firebaseInitialise.js"></script>
+
 </head>
 
 <body>
@@ -144,11 +148,20 @@
 	var points;
 	markerControls1.addEventListener('markerFound', function(event){
 		video.play();
-		if (isMarkerFound == false){
+		if (isMarkerFound === false){
 			points = 10;
+			var incrementPoints = firebase.database().ref('points/user1');
+			incrementPoints.transaction(function(currentPoints) {
+				console.log("adding 10 points");
+				// If node/clicks has never been set, currentRank will be `null`.
+				return (currentPoints || 0) + points;
+			});
+			isMarkerFound = true;
+			console.log(points);
 		}
-		console.log(points)
-	})
+
+
+	});
 	markerControls1.addEventListener('markerLost', function(event){
 		console.log("bbbbb");
 	})

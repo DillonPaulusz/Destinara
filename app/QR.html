@@ -9,6 +9,10 @@
     <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
     <script type="text/javascript" src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js" ></script>
 
+    <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-database.js"></script>
+    <script src="../assets/js/firebaseInitialise.js"></script>
+
     <style>
         #preview {
             width: 100%;
@@ -52,9 +56,17 @@
 
 <script type="text/javascript">
     let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
+    let collectedPoints = 10;
     scanner.addListener('scan', function (content) {
         $("#contentText").html(content);
         $( "#popupQR" ).popup( "open" );
+
+        var incrementPoints = firebase.database().ref('points/user1');
+        incrementPoints.transaction(function(currentPoints) {
+            console.log("adding 10 points");
+            // If node/clicks has never been set, currentRank will be `null`.
+            return (currentPoints || 0) + collectedPoints;
+        });
         console.log(content);
     });
     Instascan.Camera.getCameras().then(function (cameras) {
