@@ -39,7 +39,7 @@
                         "<img src='../assets/images/destinations/madakalapuwa.png'></div><div class='destination-list-text'>" + element.name + "<div class='leaderboard-pt'><span>" + element.points + "pts</span></div></div></div>");
 
                     if(element.name == "Dillon paulusz"){
-                        $('.lb-profile-text').append("<p>Points : " + element.points +"</p>");
+                        $('.lb-profile-text').append("<div>Points : " + element.points +"</div>");
                     }
 
                     $( "#progressbar" ).progressbar({
@@ -88,24 +88,31 @@
     <div class="profile-header">
 
 
-        <div class="profile" style="height: 138px;">
-            <div style="font-size: 10px"><div style="float: left"> gold </div><div style="float: right">platinum</div></div>
-            <br>
-            <div id="progressbar" style="margin-bottom: 20px"></div>
-            <div style="height: 85px;text-align: center;margin-top: 20px">
-                <img class="lb-profile-pic" src="../assets/images/profile/profile-pic.jpg">
+        <div class="profile">
+            <div id="led-prbar">
+                <div style="font-size: 10px">
+                    <div style="float: left"> gold </div><div style="float: right">platinum</div></div>
+                <br>
+                <div id="progressbar" style="margin-bottom: 20px"></div>
+            </div>
+
+            <div style="text-align: center;" id="lb-pro-con">
+                <div>
+                    <img class="lb-profile-pic" src="../assets/images/profile/profile-pic.jpg">
+                </div>
+
                 <div class="lb-profile-text">
 
-                    <p class="lb-profile-name">Dillon Paulusz</p>
+                    <div class="lb-profile-name">Dillon Paulusz</div>
 
                 </div>
             </div>
-            <hr>
+
         </div>
 
     </div>
 
-    <div class="leader-board" style="margin-top: 190px">
+    <div class="leader-board">
     </div>
 
     <div class="nav-bar" data-position="fixed" data-role="footer" data-tap-toggle="false">
