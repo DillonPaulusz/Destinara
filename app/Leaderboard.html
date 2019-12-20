@@ -11,10 +11,33 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/js/fontawesome.min.js"></script>
     <link rel="stylesheet" href="../font-aw/css/all.css" />
 
+    <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-database.js"></script>
+    <script src="../assets/js/firebaseInitialise.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
     <script>
+        $(document).ready(function() {
+            $( "#progressbar" ).progressbar({
+                value: 0
+            });
+        });
 
+        function getPoints() {
+            let dddd = firebase.database().ref('points');
+            dddd.on('child_added', function(data) {
+                $('.points').text("Points : " + data.val());
+                $( "#progressbar" ).progressbar({
+                    value: data.val()/10
+                });
+
+                $('#ponts-lead').text(data.val()+"pts");
+            });
+        }
+
+
+
+        getPoints();
         $.ajax({
             type: 'GET',
             url: '../Json/leaderboard.json',
@@ -35,20 +58,24 @@
 
                 $.each(sorted, function (index, element) {
 
-                    $('.leader-board').append("<div class='leader-board-item'><div class='leader-board-img'>" +
-                        "<img src='../assets/images/destinations/madakalapuwa.png'></div><div class='destination-list-text'>" + element.name + "<div class='leaderboard-pt'><span>" + element.points + "pts</span></div></div></div>");
+                    if( element.name === "Dillon paulusz"){
+                        $('.leader-board').append("<div class='leader-board-item'><div class='leader-board-img'>" +
+                            "<img src='"+element.avatar+"'></div><div class='destination-list-text'>" + element.name + "<div class='leaderboard-pt'><span id='ponts-lead'>" + element.points + "pts</span></div></div></div>");
 
-                    if(element.name == "Dillon paulusz"){
-                        $('.lb-profile-text').append("<div>Points : " + element.points +"</div>");
+                    } else {
+                        $('.leader-board').append("<div class='leader-board-item'><div class='leader-board-img'>" +
+                            "<img src='"+element.avatar+"'></div><div class='destination-list-text'>" + element.name + "<div class='leaderboard-pt'><span>" + element.points + "pts</span></div></div></div>");
+
                     }
 
-                    $( "#progressbar" ).progressbar({
-                        value: 26
-                    });
+
 
                 });
             }
         });
+
+
+
 
 
     </script>
@@ -104,6 +131,7 @@
                 <div class="lb-profile-text">
 
                     <div class="lb-profile-name">Dillon Paulusz</div>
+                    <div class="points">loading</div>
 
                 </div>
             </div>

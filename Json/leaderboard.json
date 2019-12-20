@@ -1,46 +1,46 @@
 [{
   "name" : "Ajmaal majeed",
    "points" : 100,
-  "avatar" : ""
+  "avatar" : "https://pngimage.net/wp-content/uploads/2018/06/profile-avatar-png-5.png"
  } , {
   "name" : "Lakjeewa wijebandara",
   "points" : 110,
-  "avatar" : ""
+  "avatar" : "https://pngimage.net/wp-content/uploads/2018/06/profile-avatar-png-5.png"
 },{
   "name" : "Anjana supun",
   "points" : 250,
-  "avatar" : ""
+  "avatar" : "https://pngimage.net/wp-content/uploads/2018/06/profile-avatar-png-5.png"
 },{
   "name" : "Disuru rathnayaka",
   "points" : 200,
-  "avatar" : ""
+  "avatar" : "https://pngimage.net/wp-content/uploads/2018/06/profile-avatar-png-5.png"
 },{
   "name" : "Andrea nim",
   "points" : 140,
-  "avatar" : ""
+  "avatar" : "https://pngimage.net/wp-content/uploads/2018/06/profile-avatar-png-5.png"
 },{
   "name" : "Nirosha jayasundara",
-  "points" : 300,
-  "avatar" : ""
+  "points" : 200,
+  "avatar" : "https://pngimage.net/wp-content/uploads/2018/06/profile-avatar-png-5.png"
 },{
   "name" : "Ashfaq ahamed",
   "points" : 210,
-  "avatar" : ""
+  "avatar" : "https://pngimage.net/wp-content/uploads/2018/06/profile-avatar-png-5.png"
 },{
   "name" : "Isuru nimantha",
   "points" : 10,
-  "avatar" : ""
+  "avatar" : "https://pngimage.net/wp-content/uploads/2018/06/profile-avatar-png-5.png"
 },{
   "name" : "Sasindu sithara",
   "points" : 190,
-  "avatar" : ""
+  "avatar" : "https://pngimage.net/wp-content/uploads/2018/06/profile-avatar-png-5.png"
 },{
   "name" : "Minuka perera",
   "points" : 90,
-  "avatar" : ""
+  "avatar" : "https://pngimage.net/wp-content/uploads/2018/06/profile-avatar-png-5.png"
 },{
   "name" : "Dillon paulusz",
-  "points" : 260,
-  "avatar" : ""
+  "points" : 400,
+  "avatar" : "../assets/images/profile/profile-pic.jpg"
 }
 ]
