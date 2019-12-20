@@ -94,23 +94,20 @@
         });
 
         function getReviews(destination_id) {
-            console.log("destination id get review to :", destination_id);
-            return firebase.database().ref('destinations/' + destination_id).once('value').then(function (snapshot) {
+            let dddd = firebase.database().ref('destinations/' + destination_id);
+            dddd.on('child_added', function(data) {
+                console.log("yoyoyoyyoo",data.val());
 
-                snapshot.forEach(function (childSnapshot) {
-                    // var childKey = childSnapshot.key;
-                    var childData = childSnapshot.val();
-                    console.log("came data", childData);
-                    $("#review-content").append(`<div class="rating-usr" style="padding: 15px">
+                $("#review-content").append(`<div class="rating-usr" style="padding: 15px">
                         <div style="height: 60px">
-                            <img src="${childData['image']}">
-                            <div class="rating-usr-name">${childData['name']}</div>
-                            <div class="rate-date">${childData['date']}</div>
+                            <img src="${data.val()['image']}">
+                            <div class="rating-usr-name">${data.val()['name']}</div>
+                            <div class="rate-date">${data.val()['date']}</div>
                         </div>
-                        <p class="rating-comment">${childData['review']}</p>
+                        <p class="rating-comment">${data.val()['review']}</p>
                     </div>`);
-                });
             });
+
         }
     </script>
 
@@ -157,7 +154,7 @@
         }
     </style>
 </head>
-<body>
+<body id="body-tag">
 <div data-role="page">
     <div data-role="header" class="head" data-position="fixed" data-tap-toggle="false" style="position: fixed">
         <div class="head" style="background-color: #FF8F77">
@@ -200,7 +197,7 @@
         <h5>What do you think ?</h5>
         <textarea cols="40" rows="8" name="textarea-1" id="textarea-1"></textarea>
         <br>
-        <a class="button-def ui-shadow" data-ajax="false" href="#">Submit</a>
+        <a class="button-def ui-shadow" id="submit-btn" data-ajax="false" href="#">Submit</a>
     </div>
 
     <div data-role="panel" id="mypanel" data-display="overlay">
@@ -259,10 +256,54 @@
 <script>
     $(document).ready(function(){
 
+        let id = searchParams.get('id');
+
+        var starRatingSelected;
+
+
+
+        $('#addReview').on("click",function () {
+
+            $('#overlay-screen').show();
+            $('#overlay-popup').show();
+            $('#overlay').show();
+        });
+        $("#submit-btn").on("click",function () {
+            let review = $("#textarea-1").val();
+            if(review !== "" && starRatingSelected !== undefined){
+                let data = {
+                    date : "2020/01/03",
+                    review: review,
+                    rating: starRatingSelected,
+                    name : "Dillon",
+                    image : "https://pngimage.net/wp-content/uploads/2018/06/profile-avatar-png-5.png"
+                };
+                console.log("submit the review" ,data);
+
+                var newKey = firebase.database().ref().child('destinations').push().key;
+                return firebase.database().ref('destinations/'+id+'/' + newKey).set(data, function (error) {
+                    if (error) {
+                        // The write failed...
+                        console.log("Data adding failed");
+                    } else {
+                        console.log("Data added successfully");
+                        $("#textarea-1").val("");
+                        $('#overlay-screen').hide();
+                        $('#overlay-popup').hide();
+                        $('#overlay').hide();
+                        // Data saved successfully!
+                    }
+                });
+
+                // var destinationReview = firebase.database().ref('destinations/' + id);
+
+            }
+
+        });
         /* 1. Visualizing things on Hover - See next part for action on click */
         $('#stars li').on('mouseover', function(){
             var onStar = parseInt($(this).data('value'), 10); // The star currently mouse on
-
+            starRatingSelected = onStar;
             // Now highlight all the stars that's not after the current hovered star
             $(this).parent().children('li.star').each(function(e){
                 if (e < onStar) {
@@ -283,6 +324,7 @@
         /* 2. Action to perform on click */
         $('#stars li').on('click', function(){
             var onStar = parseInt($(this).data('value'), 10); // The star currently selected
+            console.log(onStar,"ggggg");
             var stars = $(this).parent().children('li.star');
 
             for (i = 0; i < stars.length; i++) {
@@ -317,7 +359,7 @@
 </script>
             <div class="destination-reviews">
                 <h1>Reviews
-                    <div style="float: right"> <a href="#overlay" data-rel="popup" >+Add review</a></div>
+                    <div style="float: right"> <a href="#overlay" data-rel="popup" id="addReview" >+Add review</a></div>
                 </h1>
                 <div id="review-content"></div>
             </div>
