@@ -1799,3 +1799,27 @@ height: 30px
     position: fixed;text-align: center;bottom: 15px;left: 0;right: 0
 }
 
+/*SPLASH SCREEN STYLES*/
+
+.preload {
+    width: 100%;
+    height: 100%;
+    background: #333;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+
+}
+
+.logo {
+    width: 300px;
+    height: 70px;
+    font-size: 100px;
+    text-shadow: 1px 2px 2px #000;
+    color: azure;
+}
+
+.appName {
+    text-align: center;
+}
