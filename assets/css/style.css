@@ -455,21 +455,21 @@
     background-color: #f9f9f9;
     z-index: 999;
     position: fixed;
-    height: 200px;
+    height: 180px;
     width: 100%;
     top: 69px;
 }
 
 .profile {
    padding: 25px;
-    height: 114px;
+   ;
 }
 
 .profile-pic {
     border-radius: 50%;
     float: left;
-    height: 110px;
-    width: 110px;
+    height: 70px;
+    width: 70px;
     border-width: 1px;
     box-shadow: 2px 2px 4px 1px #FF8F77;
     margin-right: 30px;
@@ -1376,7 +1376,7 @@ height: 30px
 
 .leader-board{
     padding: 15px;
-
+    margin-top: 190px;
 }
 
 .leader-board-item {
@@ -1720,4 +1720,81 @@ height: 30px
     font-family: "Source Sans Pro";
     font-size: 13px;
     font-style: italic;
+}
+
+
+@media screen and (orientation:portrait) {
+    #chal1{
+        float: none;
+        height: 45%;
+    }
+
+    .fade-book{
+        display: block;
+    }
+
+    #chal2{
+        float: none;
+        height: 45%;
+    }
+}
+
+.pro-tab-nav{
+    margin-top: 35px;
+}
+
+.pro-tab{
+    margin-top:180px
+}
+/* landscape */
+@media screen and (orientation:landscape) {
+    #chal1{
+        float: left;
+        height: 90%;
+        width: 47%;
+    }
+
+    #chal2{
+        float: right;
+        height: 90%;
+        width: 47%;
+    }
+
+    #led-prbar{
+        width: 40%;
+        float: right;
+        margin-top: 5px;
+    }
+
+    .profile-header{
+        height: 120px;
+    }
+
+    .leader-board{
+        margin-top: 120px;
+    }
+
+    #lb-pro-con{
+        float: left;
+        width: 55%;
+    }
+
+    .lb-profile-text{
+        margin-top: 10px;
+    }
+    .des-cont{
+        width: 20%;
+    }
+
+    .fade-book{
+        display: none;
+    }
+
+    .pro-tab-nav{
+        margin-top: 0;
+    }
+
+    .pro-tab{
+        margin-top: 150px;
+    }
 }
