@@ -5,6 +5,7 @@ function validate() {
     if (username === "ajmal" && password === "abc123") {
         window.location = "home.html"; // Redirecting to other page.
         } else {
+        alert("Incorrect Login Credentials")
 
     }
 }
