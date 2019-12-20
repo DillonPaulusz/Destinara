@@ -16,7 +16,7 @@
         #content {
             padding: 0;
             position: relative !important;
-            height: 80%;
+            height: 100%;
             right: 0;
             left: 0 !important;
         }
@@ -47,12 +47,59 @@
                                 lat: position.coords.latitude,
                                 lng: position.coords.longitude
                             },
-                            map: map
+                            map: map,
+
                         });
+
+
+                        new google.maps.Marker({
+                            position: { lat : 6.8667 , lng: 81.0466 },
+                            map: map,
+                            title: 'Ella Nine arch bridge'
+                        });
+
+                        new google.maps.Marker({
+                            position: { lat : 6.0535 , lng: 80.2210 },
+                            map: map,
+                            title: 'Galle fort'
+                        });
+                        new google.maps.Marker({
+                            position: { lat : 7.2906 , lng: 80.6337 },
+                            map: map,
+                            title: 'Tooth temple'
+                        });
+                        new google.maps.Marker({
+                            position: { lat : 7.7310 , lng: 81.6747 },
+                            map: map,
+                            title: 'Madakalapuwa'
+                        });
+                        new google.maps.Marker({
+                            position: { lat : 5.9483 , lng: 80.4716 },
+                            map: map,
+                            title: 'Mirissa'
+                        });
+                         new google.maps.Marker({
+                            position: { lat : 6.9934 , lng: 81.0550 },
+                            map: map,
+                            title: 'Badulla'
+                        });
+
+                        new google.maps.Marker({
+                            position: { lat : 6.944167 , lng: 80.745556 },
+                            map: map,
+                            title: 'Nanu-oya'
+                        });
+
                     })
                 }
             }, 1);
         });
+
+        function makeInfoWindowEvent(map, infowindow, marker) {
+            google.maps.event.addListener(marker, 'click', function() {
+                infowindow.open(map, marker);
+            });}
+
     </script>
 </head>
 <body>
@@ -96,22 +143,23 @@
             <br>
             <div id="progressbar2" style="margin-bottom: 20px"></div>
         </div>
-        <div style="position: absolute;top: 94px;left: 0;bottom: 0;right: 0;">
+        <div style="position: absolute;top: 94px;left: 0;bottom: 71px;right: 0;">
             <div data-role="content" id="content">
                 <div id="map_canvas" style="height:100%"></div>
-            </div>
-            <div style="text-align: center;height: 20%">
-                <div style="position: relative;top: 28%">
-                    <a class="button-def ui-shadow" href="GameRules.html" style="margin-right: 8px" data-ajax="false"> Game
-                        rules</a>
-                    <a class="button-def ui-shadow" href="Challenges.html" style="margin-left: 8px" data-ajax="false">
-                        Challenges</a>
-                </div>
-
             </div>
         </div>
     </div>
 
+
+    <div style="position: fixed;text-align: center;bottom: 51px;left: 0;right: 0;background-color: #f9f9f9 ">
+        <div style="margin: 10px">
+            <a class="button-def ui-shadow" href="GameRules.html" style="margin-right: 8px" data-ajax="false"> Game
+                rules</a>
+            <a class="button-def ui-shadow" href="Challenges.html" style="margin-left: 8px" data-ajax="false">
+                Challenges</a>
+        </div>
+
+    </div>
     <div data-role="footer" data-position="fixed" class="nav-bar" data-tap-toggle="false">
         <div data-role="navbar" class="nav-bar">
             <ul>
