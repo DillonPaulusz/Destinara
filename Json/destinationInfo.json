@@ -7,7 +7,8 @@
      2,
      5
     ],
-    "imageurl" : "../assets/images/destination-info/madakalapuwa.jpg"
+    "imageurl" : "../assets/images/destination-info/madakalapuwa.jpg",
+    "rating" : 4
   },  {
   "destination_id" : 2,
   "name" : "Badulla",
@@ -16,7 +17,8 @@
     3,
     6
   ],
-  "imageurl" : "../assets/images/destination-info/badulla.jpg"
+  "imageurl" : "../assets/images/destination-info/badulla.jpg",
+  "rating" : 2
 },  {
   "destination_id" : 3,
   "name" : "Nanu oya",
@@ -25,7 +27,8 @@
     3,
     4
   ] ,
-  "imageurl" : "../assets/images/destination-info/nanu-oya.jpg"
+  "imageurl" : "../assets/images/destination-info/nanu-oya.jpg",
+  "rating" : 3
 },  {
   "destination_id" : 4,
   "name" : "Mirissa beach",
@@ -34,7 +37,8 @@
     2,
     5
   ],
-  "imageurl" : "../assets/images/destination-info/mirssa.jpg"
+  "imageurl" : "../assets/images/destination-info/mirssa.jpg",
+  "rating" : 3
 },  {
   "destination_id" : 5,
   "name" : "Nine arches bridge ella",
@@ -44,7 +48,8 @@
     4,
     3
   ],
-  "imageurl" : "../assets/images/destination-info/ella.jpg"
+  "imageurl" : "../assets/images/destination-info/ella.jpg",
+  "rating" : 5
 },  {
   "destination_id" : 6,
   "name" : "Tooth temple kandy",
@@ -53,7 +58,8 @@
     6,
     3
   ],
-  "imageurl" : "../assets/images/destination-info/toothtemple.jpg"
+  "imageurl" : "../assets/images/destination-info/toothtemple.jpg",
+  "rating" : 4
 } ,
   {
     "destination_id" : 7,
@@ -64,6 +70,7 @@
       5,
       6
     ],
-    "imageurl" : "../assets/images/destination-info/gallefort.jpg"
+    "imageurl" : "../assets/images/destination-info/gallefort.jpg",
+    "rating" : 5
   }
 ]

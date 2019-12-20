@@ -10,7 +10,43 @@
     <link rel="stylesheet" href="../font-aw/css/all.css" />
 
     <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <style>
 
+        .text-center {
+            text-align: center;
+        }
+
+        /* Rating Star Widgets Style */
+        .rating-stars ul {
+            list-style-type: none;
+            padding: 0;
+
+            -moz-user-select: none;
+            -webkit-user-select: none;
+        }
+
+        .rating-stars ul > li.star {
+            display: inline-block;
+
+        }
+
+        /* Idle State of the stars */
+        .rating-stars ul > li.star > i.fa {
+            font-size: 10px; /* Change the size of the stars */
+            color: #ccc; /* Color on idle state */
+        }
+
+
+        /* Selected state of the stars */
+        .rating-stars ul > li.star.selected > i.fa {
+            color: #FF912C;
+        }
+
+        #stars {
+            margin-top: 5px;
+        }
+
+    </style>
 </head>
 <body>
 <div data-role="page">
@@ -46,76 +82,55 @@
             </div>
         </div>
     </div>
-
-
     <div class="recommended">
         <form class="ui-filterable">
             <input id="filterBasic-input" data-type="search">
         </form>
-        <br>
-        <div data-role="listview" data-filter="true" data-input="#filterBasic-input">
-            <div class="recommended-loc" onclick="DestinationPage(2)">
-                <div class="recommended-loc-img">
-                    <img src="../assets/images/destinations/badulla.png">
-                </div>
-                <div class="recommended-loc-text">
-                    <img src="../assets/images/Rating_ca.png">
-                    <span>Badulla</span>
-                    <p>Badulla is the main city of Uva Province situated in the lower central hills of Sri Lanka. It is
-                        the
-                        capital city of Uva Province and the Badulla District.</p>
-                </div>
-            </div>
-            <div class="recommended-loc" onclick="DestinationPage(3)">
-                <div class="recommended-loc-img">
-                    <img src="../assets/images/destinations/nanu-oya.png">
-                </div>
-                <div class="recommended-loc-text">
-                    <img src="../assets/images/Rating_ca.png">
-                    <span>Nanu oya</span>
-                    <p>Nanu Oya is a village in Sri Lanka, named after the Nanu Oya river. It is located within Nuwara
-                        Eliya District in the Central Province and is situated approximately 8 km away from Nuwara
-                        Eliya.</p>
-                </div>
-            </div>
+        <div data-role="listview" data-filter="true" data-input="#filterBasic-input" id="data-lisst">
+            <script>
+                $.ajax({
+                    type: 'GET',
+                    url: '../Json/recomended_dest.json',
+                    data: {get_param: 'value'},
+                    dataType: 'json',
+                    success: function (data) {
 
-            <div class="recommended-loc" onclick="DestinationPage(1)">
-                <div class="recommended-loc-img">
-                    <img src="../assets/images/destinations/madakalapuwa.png">
-                </div>
-                <div class="recommended-loc-text">
-                    <img src="../assets/images/Rating_ca.png">
-                    <span>Madakalapuwa</span>
-                    <p>Batticaloa is a major city in the Eastern Province, Sri Lanka, and its former capital. It is the
-                        administrative capital of the Batticaloa District. The city is the seat of the Eastern
-                        University of Sri Lanka.</p>
-                </div>
+                        $.each(data, function (index, element) {
+                            $('#data-lisst').append(" <div class=\"recommended-loc\" onclick=\"DestinationPage(" + element.destination_id + ")\">\n" +
+                                "            <div class=\"recommended-loc-img\">\n" +
+                                "                <img src=" + element.imageurl + ">\n" +
+                                "            </div>\n" +
+                                "            <div class=\"recommended-loc-text\">\n" +
+                                "             <section class='rating-widget'>" +
+                                "                <div class='rating-stars text-center'>\n" +
+                                "                    <ul id='stars' class='ratin" + element.destination_id + "'></ul>" +
+                                "                </div>" +
+                                "             </section>" +
+                                "                <span>" + element.name + "</span>\n" +
+                                "                <p>" + element.description + "</p>\n" +
+                                "            </div>\n" +
+                                "        </div>\n" +
+                                "       ")
 
-            </div>
+                            var rating = element.rating;
+                            var remaingstar = 5 - rating;
+                            for (i = 0; i < rating; i++) {
+                                $('.ratin' + element.destination_id).append('  <li class=\'star selected\' title=\'Poor\' data-value=\'1\'>\n' +
+                                    '                            <i class=\'fa fa-star fa-fw\'></i>\n' +
+                                    '                        </li>');
+                            }
 
-            <div class="recommended-loc" onclick="DestinationPage(4)">
-                <div class="recommended-loc-img">
-                    <img src="../assets/images/destinations/Mirissa.png">
-                </div>
-                <div class="recommended-loc-text">
-                    <img src="../assets/images/Rating_ca.png">
-                    <span>Mirissa</span>
-                    <p>Mirissa is a small town on the south coast of Sri Lanka, located in the Matara District of the
-                        Southern Province. It is approximately 150 kilometres south of Colombo.</p>
-                </div>
-            </div>
+                            for (i = 0; i < remaingstar; i++) {
+                                $('.ratin' + element.destination_id).append('  <li class=\'star\' title=\'Poor\' data-value=\'1\'>\n' +
+                                    '                            <i class=\'fa fa-star fa-fw\'></i>\n' +
+                                    '                        </li>');
+                            }
 
-            <div class="recommended-loc" onclick="DestinationPage(6)">
-                <div class="recommended-loc-img">
-                    <img src="../assets/images/destinations/kandy-tooth-relic.png">
-                </div>
-                <div class="recommended-loc-text">
-                    <img src="../assets/images/Rating_ca.png">
-                    <span>Tooth relic</span>
-                    <p>Sri Dalada Maligawa or the Temple of the Sacred Tooth Relic is a Buddhist temple in the city of
-                        Kandy, Sri Lanka. It is located in the royal palace complex of the former Kingdom of Kandy.</p>
-                </div>
-            </div>
+                        });
+                    }
+                });
+
+            </script>
         </div>
     </div>
     <div data-role="footer" data-position="fixed" class="nav-bar" data-tap-toggle="false" style="position: fixed;">

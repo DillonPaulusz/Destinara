@@ -2,31 +2,31 @@
 <html>
 <head>
     <title>Destinara | Destination info</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8">
     <link rel="stylesheet" href="../assets/css/jquery.mobile-1.4.5.min.css"/>
-    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/style.css"/>
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/js/fontawesome.min.js"></script>
-    <link rel="stylesheet" href="../font-aw/css/all.css" />
+    <link rel="stylesheet" href="../font-aw/css/all.css"/>
 
-<!--    firebase-->
     <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-database.js"></script>
     <script src="../assets/js/firebaseInitialise.js"></script>
-        <script>
+    <script>
         let searchParams = new URLSearchParams(window.location.search);
         let id = searchParams.get('id');
         let selectedDestination;
         var activies = [{}];
+        getReviews(id);
         $.ajax({
             type: 'GET',
-            async :false,
+            async: false,
             url: '../Json/ActivityInfo.json',
-            data: { get_param: 'value' },
+            data: {get_param: 'value'},
             dataType: 'json',
             success: function (data) {
-                $.each(data, function(index, element) {
+                $.each(data, function (index, element) {
                     activies.push(element)
                 });
             }
@@ -36,41 +36,52 @@
         $.ajax({
             type: 'GET',
             url: '../Json/destinationInfo.json',
-            data: { get_param: 'value' },
+            data: {get_param: 'value'},
             dataType: 'json',
             success: function (data) {
 
-                $.each(data, function(index, element) {
-                    if(element.destination_id == id){
+                $.each(data, function (index, element) {
+                    if (element.destination_id == id) {
                         selectedDestination = element;
-                        console.log("Destination ",selectedDestination);
+                        console.log("Destination ", selectedDestination);
                         $('.destination-img').hide().attr('src', element.imageurl).show();
                         $('.destination-desc').text(element.description);
-                        $("#bookticket").attr("href", "BookTickets.html?id="+element.destination_id);
-                        $('.destination-name').append(element.name +  `<i class='far fa-heart' id="heartIt" style='float: right'></i>`);
-                        $.each(element.activities, function(index, element) {
-                            $.each(activies, function(i, item) {
-                                if(item.activity == element){
-                                    console.log(item.activity);
-                                    $('.destination-activies').append("<div class='des-cont'><div class='definition-act-cont' onclick='myFunction("+ item.activity +")'><img src="+item.imageurl+" alt='Avatar' class='definition-act-img'>\n" +
-                                        "<div class='definition-act-over'><div class='definition-act-text'>"+item.name +"</div></div></div></div>")
+
+                        console.log(element.rating);
+
+
+                        var ul = document.getElementById("ra-stars");
+                        var items = ul.getElementsByTagName("li");
+
+                        for (i = 0; i < element.rating; i++) {
+                            items[i].classList.add('selected')
+                        }
+
+
+                        $("#bookticket").attr("href", "BookTickets.html?id=" + element.destination_id);
+                        $('.destination-name').append(element.name + `<i class='far fa-heart' id="heartIt" style='float: right;margin-left: 5px'></i>`);
+                        $.each(element.activities, function (index, element) {
+                            $.each(activies, function (i, item) {
+                                if (item.activity == element) {
+                                    $('.destination-activies').append("<div class='des-cont'><div class='definition-act-cont' onclick='myFunction(" + item.activity + ")'><img src=" + item.imageurl + " alt='Avatar' class='definition-act-img'>\n" +
+                                        "<div class='definition-act-over'><div class='definition-act-text'>" + item.name + "</div></div></div></div>")
                                 }
                             });
                         });
 
-                        $("#heartIt").on("click",function () {
+                        $("#heartIt").on("click", function () {
                             console.log("add to favourite");
                             var newKey = firebase.database().ref().child('favourites').push().key;
-                            return firebase.database().ref('favourites/user1/'+newKey).set({
+                            return firebase.database().ref('favourites/user1/' + newKey).set({
                                 destinationImg: selectedDestination['imageurl'],
                                 location: selectedDestination['name']
-                            }, function(error) {
+                            }, function (error) {
                                 if (error) {
                                     // The write failed...
                                     console.log("Data adding failed");
                                 } else {
                                     $(".destination-name").empty();
-                                    $('.destination-name').append(selectedDestination['name'] +  `<i class='fa fa-heart' id="heartIt" style='float: right'></i>`);
+                                    $('.destination-name').append(selectedDestination['name'] + `<i class='fa fa-heart' id="heartIt" style='float: right;margin-left: 5px'></i>`);
                                     console.log("Data added successfully");
                                     // Data saved successfully!
                                 }
@@ -81,12 +92,75 @@
 
             }
         });
+
+        function getReviews(destination_id) {
+            console.log("destination id get review to :", destination_id);
+            return firebase.database().ref('destinations/' + destination_id).once('value').then(function (snapshot) {
+
+                snapshot.forEach(function (childSnapshot) {
+                    // var childKey = childSnapshot.key;
+                    var childData = childSnapshot.val();
+                    console.log("came data", childData);
+                    $("#review-content").append(`<div class="rating-usr" style="padding: 15px">
+                        <div style="height: 60px">
+                            <img src="${childData['image']}">
+                            <div class="rating-usr-name">${childData['name']}</div>
+                            <div class="rate-date">${childData['date']}</div>
+                        </div>
+                        <p class="rating-comment">${childData['review']}</p>
+                    </div>`);
+                });
+            });
+        }
     </script>
+
+    <style>
+        .text-center {
+            text-align: center;
+        }
+
+        /* Rating Star Widgets Style */
+        .rating-stars ul {
+            list-style-type: none;
+            padding: 0;
+
+            -moz-user-select: none;
+            -webkit-user-select: none;
+        }
+
+        .rating-stars ul > li.star {
+            display: inline-block;
+
+        }
+
+        /* Idle State of the stars */
+        .rating-stars ul > li.star > i.fa {
+            font-size: 1.5em; /* Change the size of the stars */
+            color: #ccc; /* Color on idle state */
+        }
+
+        /* Selected state of the stars */
+        .rating-stars ul > li.star.selected > i.fa {
+            color: #FF912C;
+        }
+
+        .ui-popup-container  {
+            top: 30% !important;
+            left: 15px !important;
+            right: 15px;
+            text-align: center;
+            position: fixed;
+        }
+
+        #ra-stars > li.star > i.fa {
+            font-size: 15px !important;
+        }
+    </style>
 </head>
 <body>
 <div data-role="page">
-    <div data-role="header"  class="head" data-position="fixed" style="position: fixed">
-        <div   class="head" style="background-color: #FF8F77">
+    <div data-role="header" class="head" data-position="fixed" data-tap-toggle="false" style="position: fixed">
+        <div class="head" style="background-color: #FF8F77">
             <div class="back">
                 <a onclick="history.back()"><img src="../assets/images/icons/back.png"></a>
             </div>
@@ -94,9 +168,41 @@
             <div class="head-text">
                 Destination info
             </div>
-            <a href = "#mypanel" style="position: absolute ;top: 45%; right: 20px;height: 100%; color: #f9f9f9;"> <i class="fas fa-bars"></i></a>
+            <a href="#mypanel" style="position: absolute ;top: 45%; right: 20px;height: 100%; color: #f9f9f9;"> <i
+                    class="fas fa-bars"></i></a>
         </div>
     </div><!-- /header -->
+
+    <div id="overlay" data-role="popup" data-overlay-theme="a" class="ui-content">
+
+        <h2>Rate destination</h2>
+        <section class='rating-widget'>
+            <div class='rating-stars text-center'>
+                <ul id='stars'>
+                    <li class='star' title='Poor' data-value='1'>
+                        <i class='fa fa-star fa-fw'></i>
+                    </li>
+                    <li class='star' title='Fair' data-value='2'>
+                        <i class='fa fa-star fa-fw'></i>
+                    </li>
+                    <li class='star' title='Good' data-value='3'>
+                        <i class='fa fa-star fa-fw'></i>
+                    </li>
+                    <li class='star' title='Excellent' data-value='4'>
+                        <i class='fa fa-star fa-fw'></i>
+                    </li>
+                    <li class='star' title='WOW!!!' data-value='5'>
+                        <i class='fa fa-star fa-fw'></i>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <h5>What do you think ?</h5>
+        <textarea cols="40" rows="8" name="textarea-1" id="textarea-1"></textarea>
+        <br>
+        <a class="button-def ui-shadow" data-ajax="false" href="#">Submit</a>
+    </div>
+
     <div data-role="panel" id="mypanel" data-display="overlay">
         <div data-position="fixed" class="sidebar">
             <div class="sidebar-head">
@@ -105,9 +211,9 @@
                     <p class="lb-profile-name" style="color: white !important;">Dillon Paulusz</p>
                 </div>
             </div>
-            <ul  data-role="listview">
+            <ul data-role="listview">
                 <li><a class="sidebar-item" href="cart.html">Cart</a></li>
-                <li><a  class="sidebar-item" href="AboutUs.html">About us</a></li>
+                <li><a class="sidebar-item" href="AboutUs.html">About us</a></li>
             </ul>
             <div class="sidebar-logout">
                 <div style="margin: 10px">
@@ -116,53 +222,129 @@
             </div>
         </div>
     </div>
-
     <div style="padding: 15px">
         <div class="destination-info">
             <img class="destination-img">
-            <div class="destination-name"></div>
-
-            <div class="destination-desc" style="padding: 5px"></div>
+            <div class="destination-name" style="float:left;"></div>
+            <section class='rating-widget' style="float: right ;">
+                <div class='rating-stars text-center'>
+                    <ul id='ra-stars'>
+                        <li class='star' title='Poor' data-value='1'>
+                            <i class='fa fa-star fa-fw'></i>
+                        </li>
+                        <li class='star' title='Fair' data-value='2'>
+                            <i class='fa fa-star fa-fw'></i>
+                        </li>
+                        <li class='star' title='Good' data-value='3'>
+                            <i class='fa fa-star fa-fw'></i>
+                        </li>
+                        <li class='star' title='Excellent' data-value='4'>
+                            <i class='fa fa-star fa-fw'></i>
+                        </li>
+                        <li class='star' title='WOW!!!' data-value='5'>
+                            <i class='fa fa-star fa-fw'></i>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            <div class="destination-desc" style="padding: 5px;margin-top: 50px"></div>
 
             <div class="destination-activies">
                 <h1>Activities</h1>
             </div>
+            <br> <br> <br> <br>
 
-            <br>  <br>  <br>  <br>
+
+
+<script>
+    $(document).ready(function(){
+
+        /* 1. Visualizing things on Hover - See next part for action on click */
+        $('#stars li').on('mouseover', function(){
+            var onStar = parseInt($(this).data('value'), 10); // The star currently mouse on
+
+            // Now highlight all the stars that's not after the current hovered star
+            $(this).parent().children('li.star').each(function(e){
+                if (e < onStar) {
+                    $(this).addClass('hover');
+                }
+                else {
+                    $(this).removeClass('hover');
+                }
+            });
+
+        }).on('mouseout', function(){
+            $(this).parent().children('li.star').each(function(e){
+                $(this).removeClass('hover');
+            });
+        });
+
+
+        /* 2. Action to perform on click */
+        $('#stars li').on('click', function(){
+            var onStar = parseInt($(this).data('value'), 10); // The star currently selected
+            var stars = $(this).parent().children('li.star');
+
+            for (i = 0; i < stars.length; i++) {
+                $(stars[i]).removeClass('selected');
+            }
+
+            for (i = 0; i < onStar; i++) {
+                $(stars[i]).addClass('selected');
+            }
+
+            // JUST RESPONSE (Not needed)
+            var ratingValue = parseInt($('#stars li.selected').last().data('value'), 10);
+            var msg = "";
+            if (ratingValue > 1) {
+                msg = "Thanks! You rated this " + ratingValue + " stars.";
+            }
+            else {
+                msg = "We will improve ourselves. You rated this " + ratingValue + " stars.";
+            }
+            responseMessage(msg);
+
+        });
+
+
+    });
+
+
+    function responseMessage(msg) {
+        $('.success-box').fadeIn(200);
+        $('.success-box div.text-message').html("<span>" + msg + "</span>");
+    }
+</script>
             <div class="destination-reviews">
-                <h1>Reviews</h1>
+                <h1>Reviews
+                    <div style="float: right"> <a href="#overlay" data-rel="popup" >+Add review</a></div>
+                </h1>
+                <div id="review-content"></div>
             </div>
         </div>
-        <br>  <br>  <br>  <br><br>  <br>  <br>  <br>
 
     </div>
-
     <div style="position: fixed;text-align: center;bottom: 51px;left: 0;right: 0;background-color: #f9f9f9 ">
         <div style="margin: 10px">
             <a class="button-def ui-shadow" id="bookticket" data-ajax="false" href="BookTickets.html">Book ticket</a>
         </div>
-
     </div>
-
     <div data-role="footer" data-position="fixed" class="nav-bar" data-tap-toggle="false">
-
         <div data-role="navbar" class="nav-bar">
-
             <ul>
                 <li><a href="Home.html" id="homeNav" data-icon="custom" data-ajax="false"></a></li>
-                <li><a href="Treasure-hunt.html" id="treasurehuntNav" data-icon="custom" data-ajax="false"   ></a></li>
-                <li><a href="Leaderboard.html" id="leaderboardNav" data-icon="custom" data-ajax="false"   ></a></li>
-                <li><a href="Profile.html" id="profileNav" data-icon="custom" data-ajax="false"   ></a></li>
+                <li><a href="Treasure-hunt.html" id="treasurehuntNav" data-icon="custom" data-ajax="false"></a></li>
+                <li><a href="Leaderboard.html" id="leaderboardNav" data-icon="custom" data-ajax="false"></a></li>
+                <li><a href="Profile.html" id="profileNav" data-icon="custom" data-ajax="false"></a></li>
             </ul>
         </div>
     </div>
 </div>
 <script>
     function myFunction(id) {
-        window.location.href="Activity-info.html?id=" + id;
+        window.location.href = "Activity-info.html?id=" + id;
         console.log(id);
     }
-
 </script>
 </body>
 </html>
