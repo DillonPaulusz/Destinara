@@ -12,10 +12,7 @@
 	<script src="threex/threex-artoolkitcontext.js"></script>
 	<script src="threex/threex-arbasecontrols.js"></script>
 	<script src="threex/threex-armarkercontrols.js"></script>
-
 	<link href="../assets/css/style.css" rel="stylesheet"/>
-
-
 
 </head>
 
@@ -27,7 +24,7 @@
 		</div>
 
 		<div class="head-text">
-			Ar challenge
+			AR Challenge
 		</div>
 		<a href = "#mypanel" style="position: absolute ;top: 45%; right: 20px;height: 100%; color: #f9f9f9;"> <i class="fas fa-bars"></i></a>
 
@@ -38,6 +35,7 @@
 <video id="video"  loop crossOrigin="anonymous" webkit-playsinline style="display:none">
 	<source src="video/ella.MOV" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
 </video>
+
 
 <script>
 	var scene, camera, renderer, clock, deltaTime, totalTime;
@@ -142,11 +140,15 @@
 		render();
 
 	}
-
+	var isMarkerFound = false;
+	var points;
 	markerControls1.addEventListener('markerFound', function(event){
 		video.play();
+		if (isMarkerFound == false){
+			points = 10;
+		}
+		console.log(points)
 	})
-
 	markerControls1.addEventListener('markerLost', function(event){
 		console.log("bbbbb");
 	})
