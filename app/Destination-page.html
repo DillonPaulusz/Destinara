@@ -19,6 +19,7 @@
         let selectedDestination;
         var activies = [{}];
         getReviews(id);
+
         $.ajax({
             type: 'GET',
             async: false,
@@ -110,10 +111,13 @@
 
         }
 
+
+
+
         $(document).scroll(function () {
             if (window.orientation > 0 ){
                 var y = $(this).scrollTop();
-                if (y > 200) {
+                if (y > 150) {
                     $('.fade-book').fadeIn();
                 } else {
                     $('.fade-book').fadeOut();

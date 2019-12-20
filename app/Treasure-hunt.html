@@ -12,6 +12,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/js/fontawesome.min.js"></script>
     <link rel="stylesheet" href="../font-aw/css/all.css" />
 
+    <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-database.js"></script>
+    <script src="../assets/js/firebaseInitialise.js"></script>
     <style>
         #content {
             padding: 0;
@@ -22,10 +25,25 @@
         }
     </style>
     <script>
+
+
+
+        function getPoints() {
+            let dddd = firebase.database().ref('points');
+            dddd.on('child_added', function (data) {
+                $("#progressbar2").progressbar({
+                    value: data.val() / 10
+                });
+            });
+        }
+
+
         $(document).ready(function () {
             $("#progressbar2").progressbar({
-                value: 26
+                value: 0
             });
+
+            getPoints();
             setTimeout(function () {
                 // This is the minimum zoom level that we'll allow
                 var minZoomLevel = 12;
@@ -37,7 +55,7 @@
                     navigator.geolocation.getCurrentPosition(function (position) {
 
                         var map = new google.maps.Map(document.getElementById('map_canvas'), {
-                            zoom: minZoomLevel,
+                            zoom: 8,
                             center: new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
                             mapTypeId: google.maps.MapTypeId.ROADMAP
                         });
@@ -48,57 +66,50 @@
                                 lng: position.coords.longitude
                             },
                             map: map,
+                            icon : "../assets/images/mapicon.png"
 
                         });
 
 
-                        new google.maps.Marker({
-                            position: { lat : 6.8667 , lng: 81.0466 },
-                            map: map,
-                            title: 'Ella Nine arch bridge'
-                        });
+                        //Multiple Markers
+                        var markers = [
+                            ['Ella Nine arch bridge', 6.8667 ,  81.0466 ],
+                            ['Galle fort', 6.0535 , 80.2210],
+                            ['Tooth temple', 7.2906 , 80.6337],
+                            ['Madakalapuwa', 7.7310 ,  81.6747],
+                            ['Mirissa',  5.9483 , 80.4716],
+                            ['Badulla', 6.9934 , 81.0550],
+                            ['Nanu-oya', 6.944167 , 80.745556 ]
+                       ]
 
-                        new google.maps.Marker({
-                            position: { lat : 6.0535 , lng: 80.2210 },
-                            map: map,
-                            title: 'Galle fort'
-                        });
-                        new google.maps.Marker({
-                            position: { lat : 7.2906 , lng: 80.6337 },
-                            map: map,
-                            title: 'Tooth temple'
-                        });
-                        new google.maps.Marker({
-                            position: { lat : 7.7310 , lng: 81.6747 },
-                            map: map,
-                            title: 'Madakalapuwa'
-                        });
-                        new google.maps.Marker({
-                            position: { lat : 5.9483 , lng: 80.4716 },
-                            map: map,
-                            title: 'Mirissa'
-                        });
-                         new google.maps.Marker({
-                            position: { lat : 6.9934 , lng: 81.0550 },
-                            map: map,
-                            title: 'Badulla'
-                        });
+                        var bounds = new google.maps.LatLngBounds();
+                        var infoWindow = new google.maps.InfoWindow();
+                        var marker, i;
 
-                        new google.maps.Marker({
-                            position: { lat : 6.944167 , lng: 80.745556 },
-                            map: map,
-                            title: 'Nanu-oya'
-                        });
 
+                        // Loop through markers array and place each marker on the map
+                        for(i=0; i<markers.length; i++) {
+                            var marker_position = new google.maps.LatLng(markers[i][1], markers[i][2]);
+                            marker = new google.maps.Marker({
+                                position: marker_position,
+                                map: map,
+                                title: markers[i][0]
+                            });
+
+                            //Assign each marker an info window, which will display in click event
+                            google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                                return function () {
+                                    infoWindow.setContent(markers[i][0]);
+                                    infoWindow.open(map, marker);
+                                }
+                            })(marker, i));
+                        }
                     })
                 }
             }, 1);
         });
 
-        function makeInfoWindowEvent(map, infowindow, marker) {
-            google.maps.event.addListener(marker, 'click', function() {
-                infowindow.open(map, marker);
-            });}
+
 
     </script>
 </head>
@@ -143,7 +154,7 @@
             <br>
             <div id="progressbar2" style="margin-bottom: 20px"></div>
         </div>
-        <div style="position: absolute;top: 94px;left: 0;bottom: 71px;right: 0;">
+        <div style="position: absolute;top: 75px;left: 0;bottom: 71px;right: 0;">
             <div data-role="content" id="content">
                 <div id="map_canvas" style="height:100%"></div>
             </div>

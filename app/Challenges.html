@@ -11,13 +11,25 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/js/fontawesome.min.js"></script>
     <link rel="stylesheet" href="../font-aw/css/all.css" />
-
+    <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-database.js"></script>
+    <script src="../assets/js/firebaseInitialise.js"></script>
     <script>
-        $(document).ready(function () {
-            $("#progressbar2").progressbar({
-                value: 26
+        $(document).ready(function() {
+            $( "#progressbar2" ).progressbar({
+                value: 0
             });
         });
+        getPoints();
+        function getPoints() {
+            let dddd = firebase.database().ref('points');
+            dddd.on('child_added', function(data) {
+                $( "#progressbar2" ).progressbar({
+                    value: data.val()/10
+                });
+            });
+        }
+
     </script>
 </head>
 <body>
