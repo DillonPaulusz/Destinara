@@ -991,8 +991,8 @@ height: 30px
 }
 
 .recommended-loc {
-    border: #E74B43;
-    /*border-style: solid;*/
+    border: #e74c40;
+    border-style: solid;
     border-radius: 6px;
     min-height: 120px;
     border-width: 1px;

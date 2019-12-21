@@ -79,7 +79,7 @@
                         "                    </div>\n" +
                         "                </div>\n" +
                         "                <div class=\"ticket-right\">\n" +
-                        "                    <a class=\"button-def ui-shadow ticket-button\" data-ajax=\"false\" href=\"#\">Book</a>\n" +
+                        "                    <a class=\"button-def ui-shadow ticket-button\" data-ajax=\"false\" href=\"#\" onclick='payment("+element.ticket_id+")'>Book</a>\n" +
                         "                </div>\n" +
                         "            </div>\n" +
                         "        </div>");
@@ -129,6 +129,9 @@
         return ret;
     }
 
+    function payment(id) {
+        window.location.href="Payment.html?id="+id;
+    }
 
 </script>
 </head>
