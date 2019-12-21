@@ -11,87 +11,202 @@
     <script type="text/javascript" src="PATH/TO/YOUR/COPY/OF/jquery.mousewheel.min.js"></script>
     <script type="text/javascript" src="http://dev.jtsage.com/cdn/spinbox/latest/jqm-spinbox.min.js"></script>
     <meta charset="UTF-8">
+    <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.0/firebase-database.js"></script>
+    <script src="../assets/js/firebaseInitialise.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/js/fontawesome.min.js"></script>
+    <link rel="stylesheet" href="../font-aw/css/all.css"/>
+    <script>
+        let searchParams = new URLSearchParams(window.location.search);
+        let id = searchParams.get('id');
+
+        $.ajax({
+            type: 'GET',
+            url: '../Json/tickets.json',
+            data: {get_param: 'value'},
+            dataType: 'json',
+            success: function (data) {
+
+                $.each(data, function (index, element) {
+                    if(element.ticket_id === id){
+                        $('#locstat').text(element.location_name)
+                        $('#depstat').text(element.depaturestation)
+                        $('#deptime').text(element.date +" " +element.time)
+                        $('#arivtime').text(element.arrival)
+                    }
+                });
+
+            }
+        });
+
+        getPoints();
+        function getPoints() {
+            let dddd = firebase.database().ref('points');
+            dddd.on('child_added', function(data) {
+                $('.pts-av').text("Points available : " + data.val());
+
+            });
+        }
+    </script>
+    <style>
+        .head-t{
+            margin-top: 10px;
+            font-family: Source Sans Pro;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 20px;
+            color: rgb(151, 151, 151);
+        }
+
+        .head-t2{
+            font-family: Source Sans Pro;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 24px;
+            color: rgb(0, 0, 0);
+        }
+    </style>
 </head>
 <body>
 <div data-role = "page" id = "page1">
-
-    <div data-role="header" data-position="fixed" data-tap-toggle="false">
-        <div style="background-color: #FF8F77">
-            <div class="head-logo">
-                <img src="../assets/images/header-logo.png">
-                <a href="#mypanel" style="position: absolute ;top: 25%; right: 20px;height: 100%; color: #f9f9f9;"> <i
-                        class="fas fa-bars"></i></a>
+    <div data-role="header"  class="head" data-position="fixed" style="position: fixed">
+        <div   class="head" style="background-color: #FF8F77">
+            <div class="back">
+                <a onclick="history.back()"><img src="../assets/images/icons/back.png"></a>
             </div>
+
+            <div class="head-text">
+                Book train tickets
+            </div>
+            <a href = "#mypanel" style="position: absolute ;top: 45%; right: 20px;height: 100%; color: #f9f9f9;"> <i class="fas fa-bars"></i></a>
+
         </div>
     </div><!-- /header -->
-    <div class="ui-field-contain">
-        <label for="spin">Use points </label>
-        <input type="text" data-role="spinbox" name="spin" id="spin" value="10" min="0" max="" />
-    </div>
-
-    <form id="frmBooking" name="bookingForm" action="post" action="_self">
-        <button id="customButton">Purchase</button>
-    </form>
-
-    <div id="successpayment" data-role="popup" data-overlay-theme="a" class="ui-content">
-        <h4>Payment Successful</h4>
-        <a class="button-def ui-shadow"  data-rel="back" href="#">ok</a>
-    </div>
-
-    <div class="nav-bar" data-position="fixed" data-role="footer" data-tap-toggle="false">
-        <div class="nav-bar" data-role="navbar">
-            <ul>
-                <li><a data-ajax="false" data-icon="custom" href="Home.html" id="homeNav"></a></li>
-                <li><a data-ajax="false" data-icon="custom" href="Treasure-hunt.html" id="treasurehuntNav"></a></li>
-                <li><a  data-ajax="false" data-icon="custom" href="Leaderboard.html"
-                        id="leaderboardNav2"></a></li>
-                <li><a data-ajax="false" data-icon="custom" href="Profile.html" id="profileNav"></a></li>
+    <div data-role="panel" id="mypanel" data-display="overlay">
+        <div data-position="fixed" class="sidebar">
+            <div class="sidebar-head">
+                <img class="lb-profile-pic" src="../assets/images/profile/profile-pic.jpg">
+                <div class="lb-profile-text">
+                    <p class="lb-profile-name" style="color: white !important;">Dillon Paulusz</p>
+                </div>
+            </div>
+            <ul  data-role="listview">
+                <li><a class="sidebar-item" href="cart.html">Cart</a></li>
+                <li><a  class="sidebar-item" href="AboutUs.html">About us</a></li>
             </ul>
+            <div class="sidebar-logout">
+                <div style="margin: 10px">
+                    <a class="button-def ui-shadow" data-ajax="false" href="#">logout</a>
+                </div>
+            </div>
         </div>
     </div>
+    <div style="padding: 15px">
 
-    <div align="center" id="thankyouPayment">
+        <div class="ticket-info" style="height: 85px;text-align: center">
 
-        <script type="text/javascript">
+            <div style="float: left">
+                <div class="head-t2">Start location</div>
+                <div id="depstat" ></div>
+                <div id="deptime"></div>
+            </div>
+            <i class="fas fa-arrow-right"></i>
+            <div style="float: right">
+                <div  class="head-t2">End location</div>
+                <div id="locstat" ></div>
+                <div id="arivtime"></div>
+            </div>
+        </div>
+        <div style="margin-top: 10px"> cost of ticket : 100</div>
+        <hr>
 
-            var costOfTicket = 100;
-            var numberOfTickets = 5;
-            var availablePoints = 400;
+        <div>
+            <label class="head-t">No of tickets : </label>
+            <input type="number" id="nooftickets" value="1">
+        </div>
+
+        <div class="ui-field-contain">
+            <label class="head-t" for="spin">Use points </label>
+
+            <div class="pts-av">loading</div>
+            <br>
+            <div style="text-align: center">
+
+                <input type="text" data-role="spinbox" name="spin" id="spin" value="0" min="0" max="50" />
+
+            </div>
+
+        </div>
+
+        <br>   <br>   <br>   <br>   <br>   <br>
+        <div style="position: fixed;bottom: 40px;left: 0;right: 0">
+            <form id="frmBooking" name="bookingForm" action="post" action="_self">
+                <button id="customButton">Purchase</button>
+            </form>
+        </div>
 
 
+        <div id="successpayment" data-role="popup" data-overlay-theme="a" class="ui-content">
+            <h4>Payment Successful</h4>
+            <a class="button-def ui-shadow"  data-rel="back" href="#">ok</a>
+        </div>
 
-            $("#spin").attr("min", "0");
-            $("#spin").attr("max", availablePoints);
-            $("#spin").text("refresh");
+        <div class="nav-bar" data-position="fixed" data-role="footer" data-tap-toggle="false">
+            <div class="nav-bar" data-role="navbar">
+                <ul>
+                    <li><a data-ajax="false" data-icon="custom" href="Home.html" id="homeNav"></a></li>
+                    <li><a data-ajax="false" data-icon="custom" href="Treasure-hunt.html" id="treasurehuntNav"></a></li>
+                    <li><a  data-ajax="false" data-icon="custom" href="Leaderboard.html"
+                            id="leaderboardNav2"></a></li>
+                    <li><a data-ajax="false" data-icon="custom" href="Profile.html" id="profileNav"></a></li>
+                </ul>
+            </div>
+        </div>
 
-
-            jQuery(function($){
-                var $form = $('#frmBooking');
-                var handler = StripeCheckout.configure({
-                    key:'pk_test_cp21BcECf4kMMUbSlRlZlsMo',
-                    token : function(token){
-                        if(token.id){
-                            $("#successpayment").popup("open");
-                        }
-                    }
-                })
-                var totalCost = costOfTicket * numberOfTickets - ($("#spin").val()) ;
-                $('#customButton').on('click', function(e) {
-                    handler.open({
-                        name : 'Destinara',
-                        currency: 'LKR',
-                        description: 'Total Cost:' +totalCost,
-                        amount: totalCost * 100
-                    });
-
-                    $(window).on('popstate', function(){
-                        handler.close();
-                    });
-                });
-            });
-        </script>
-
+        <div align="center" id="thankyouPayment">
+        </div>
     </div>
 </div>
+<script type="text/javascript">
+
+    var costOfTicket = 100;
+    var numberOfTickets = 5;
+    var availablePoints = 400;
+
+    $(document).ready(function(){
+        $('#spin').attr("max", 13);
+    });
+
+
+    jQuery(function($){
+        var $form = $('#frmBooking');
+        var handler = StripeCheckout.configure({
+            key:'pk_test_cp21BcECf4kMMUbSlRlZlsMo',
+            token : function(token){
+                if(token.id){
+                    $("#successpayment").popup("open");
+                }
+            }
+        })
+
+
+
+        $('#customButton').on('click', function(e) {
+            var noticket = $('#nooftickets').val();
+            var totalCost =( costOfTicket * noticket )- ($("#spin")[0].value) ;
+            handler.open({
+                name : 'Destinara',
+                currency: 'LKR',
+                description: 'Total Cost:' +totalCost,
+                amount: totalCost * 100
+            });
+
+            $(window).on('popstate', function(){
+                handler.close();
+            });
+        });
+    });
+</script>
+
 </body>
 </html>

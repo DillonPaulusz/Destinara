@@ -56,15 +56,34 @@
                     return 0;
                 });
 
+                var val = 0;
+
                 $.each(sorted, function (index, element) {
+                    val = val+1;
 
                     if( element.name === "Dillon paulusz"){
                         $('.leader-board').append("<div class='leader-board-item'><div class='leader-board-img'>" +
+                            "<img src='../assets/images/leaderboard/star_gold_df.png' style='border-style: unset;'>"+
                             "<img src='"+element.avatar+"'></div><div class='destination-list-text'>" + element.name + "<div class='leaderboard-pt'><span id='ponts-lead'>" + element.points + "pts</span></div></div></div>");
 
                     } else {
-                        $('.leader-board').append("<div class='leader-board-item'><div class='leader-board-img'>" +
-                            "<img src='"+element.avatar+"'></div><div class='destination-list-text'>" + element.name + "<div class='leaderboard-pt'><span>" + element.points + "pts</span></div></div></div>");
+                        if(val === 2){
+                            $('.leader-board').append("<div class='leader-board-item'><div class='leader-board-img'>" +
+                                "<img src='../assets/images/leaderboard/silver.png' style='border-style: unset;'>"+
+                                "<img src='"+element.avatar+"'></div><div class='destination-list-text'>" + element.name + "<div class='leaderboard-pt'><span>" + element.points + "pts</span></div></div></div>");
+
+                        } else if (val === 3){
+                            $('.leader-board').append("<div class='leader-board-item'><div class='leader-board-img'>" +
+                                "<img src='../assets/images/leaderboard/aaa.png' style='border-style: unset;'>"+
+                                "<img src='"+element.avatar+"'></div><div class='destination-list-text'>" + element.name + "<div class='leaderboard-pt'><span>" + element.points + "pts</span></div></div></div>");
+
+                        } else {
+                            $('.leader-board').append("<div class='leader-board-item'><div class='leader-board-img'>" +
+                                "<img src='../assets/images/leaderboard/Ellipse%204.png'>"+
+                                "<img src='"+element.avatar+"'></div><div class='destination-list-text'>" + element.name + "<div class='leaderboard-pt'><span>" + element.points + "pts</span></div></div></div>");
+
+                        }
+
 
                     }
 
@@ -129,7 +148,6 @@
                 </div>
 
                 <div class="lb-profile-text">
-
                     <div class="lb-profile-name">Dillon Paulusz</div>
                     <div class="points">loading</div>
 

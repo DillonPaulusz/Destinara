@@ -77,8 +77,29 @@
                 </div>
             </div>
         </div>
+        <div style="padding: 5px">
+            <button id="play" onclick="vidplay()">&gt;</button>
+
+            <video id="Video1" width="100%">
+                <source src="../app/video/ella.MOV" type="video/mp4" />
+            </video>
+        </div>
+
     </div>
 
+    <script>
+        function vidplay() {
+            var video = document.getElementById("Video1");
+            var button = document.getElementById("play");
+            if (video.paused) {
+                video.play();
+                button.textContent = "||";
+            } else {
+                video.pause();
+                button.textContent = ">";
+            }
+        }
+    </script>
     <div data-role="footer" data-position="fixed" class="nav-bar" data-tap-toggle="false">
         <div data-role="navbar" class="nav-bar">
             <ul>
