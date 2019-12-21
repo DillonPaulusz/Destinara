@@ -1,10 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>Destinara | payment</title>
+    <meta name = "viewport" content = "width = device-width, initial-scale = 1">
+    <link rel="stylesheet" href="../assets/css/style.css"/>
+    <link rel = "stylesheet" href = "https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <script src = "https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src = "https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script src = "https://checkout.stripe.com/checkout.js" ></script>
+    <script type="text/javascript" src="PATH/TO/YOUR/COPY/OF/jquery.mousewheel.min.js"></script>
+    <script type="text/javascript" src="http://dev.jtsage.com/cdn/spinbox/latest/jqm-spinbox.min.js"></script>
     <meta charset="UTF-8">
-    <title>Title</title>
 </head>
 <body>
+<div data-role = "page" id = "page1">
 
+    <div data-role="header" data-position="fixed" data-tap-toggle="false">
+        <div style="background-color: #FF8F77">
+            <div class="head-logo">
+                <img src="../assets/images/header-logo.png">
+                <a href="#mypanel" style="position: absolute ;top: 25%; right: 20px;height: 100%; color: #f9f9f9;"> <i
+                        class="fas fa-bars"></i></a>
+            </div>
+        </div>
+    </div><!-- /header -->
+    <div class="ui-field-contain">
+        <label for="spin">Use points </label>
+        <input type="text" data-role="spinbox" name="spin" id="spin" value="10" min="0" max="" />
+    </div>
+
+    <form id="frmBooking" name="bookingForm" action="post" action="_self">
+        <button id="customButton">Purchase</button>
+    </form>
+
+    <div id="successpayment" data-role="popup" data-overlay-theme="a" class="ui-content">
+        <h4>Payment Successful</h4>
+        <a class="button-def ui-shadow"  data-rel="back" href="#">ok</a>
+    </div>
+
+    <div class="nav-bar" data-position="fixed" data-role="footer" data-tap-toggle="false">
+        <div class="nav-bar" data-role="navbar">
+            <ul>
+                <li><a data-ajax="false" data-icon="custom" href="Home.html" id="homeNav"></a></li>
+                <li><a data-ajax="false" data-icon="custom" href="Treasure-hunt.html" id="treasurehuntNav"></a></li>
+                <li><a  data-ajax="false" data-icon="custom" href="Leaderboard.html"
+                        id="leaderboardNav2"></a></li>
+                <li><a data-ajax="false" data-icon="custom" href="Profile.html" id="profileNav"></a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div align="center" id="thankyouPayment">
+
+        <script type="text/javascript">
+
+            var costOfTicket = 100;
+            var numberOfTickets = 5;
+            var availablePoints = 400;
+
+
+
+            $("#spin").attr("min", "0");
+            $("#spin").attr("max", availablePoints);
+            $("#spin").text("refresh");
+
+
+            jQuery(function($){
+                var $form = $('#frmBooking');
+                var handler = StripeCheckout.configure({
+                    key:'pk_test_cp21BcECf4kMMUbSlRlZlsMo',
+                    token : function(token){
+                        if(token.id){
+                            $("#successpayment").popup("open");
+                        }
+                    }
+                })
+                var totalCost = costOfTicket * numberOfTickets - ($("#spin").val()) ;
+                $('#customButton').on('click', function(e) {
+                    handler.open({
+                        name : 'Destinara',
+                        currency: 'LKR',
+                        description: 'Total Cost:' +totalCost,
+                        amount: totalCost * 100
+                    });
+
+                    $(window).on('popstate', function(){
+                        handler.close();
+                    });
+                });
+            });
+        </script>
+
+    </div>
+</div>
 </body>
 </html>
