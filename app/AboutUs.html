@@ -9,7 +9,48 @@
     <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/js/fontawesome.min.js"></script>
     <link rel="stylesheet" href="../font-aw/css/all.css" />
+    <style>
+        .text-center {
+            text-align: center;
+        }
 
+        /* Rating Star Widgets Style */
+        .rating-stars ul {
+            list-style-type: none;
+            padding: 0;
+
+            -moz-user-select: none;
+            -webkit-user-select: none;
+        }
+
+        .rating-stars ul > li.star {
+            display: inline-block;
+
+        }
+
+        /* Idle State of the stars */
+        .rating-stars ul > li.star > i.fa {
+            font-size: 1.5em; /* Change the size of the stars */
+            color: #ccc; /* Color on idle state */
+        }
+
+        /* Selected state of the stars */
+        .rating-stars ul > li.star.selected > i.fa {
+            color: #FF912C;
+        }
+
+        .ui-popup-container  {
+            top: 30% !important;
+            left: 15px !important;
+            right: 15px;
+            text-align: center;
+            position: fixed;
+        }
+
+        #ra-stars > li.star > i.fa {
+            font-size: 15px !important;
+        }
+    </style>
 </head>
 <body>
 <div data-role="page" id="leaderboard-page">
@@ -25,6 +66,38 @@
             <a href = "#mypanel" style="position: absolute ;top: 45%; right: 20px;height: 100%; color: #f9f9f9;"> <i class="fas fa-bars"></i></a>
         </div>
     </div><!-- /header -->
+
+    <div id="overlay" data-role="popup" data-overlay-theme="a" class="ui-content">
+
+        <h2>Rate app</h2>
+        <section class='rating-widget'>
+            <div class='rating-stars text-center'>
+                <ul id='stars'>
+                    <li class='star' title='Poor' data-value='1'>
+                        <i class='fa fa-star fa-fw'></i>
+                    </li>
+                    <li class='star' title='Fair' data-value='2'>
+                        <i class='fa fa-star fa-fw'></i>
+                    </li>
+                    <li class='star' title='Good' data-value='3'>
+                        <i class='fa fa-star fa-fw'></i>
+                    </li>
+                    <li class='star' title='Excellent' data-value='4'>
+                        <i class='fa fa-star fa-fw'></i>
+                    </li>
+                    <li class='star' title='WOW!!!' data-value='5'>
+                        <i class='fa fa-star fa-fw'></i>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <h5>What do you think ?</h5>
+        <textarea cols="40" rows="8" name="textarea-1" id="textarea-1"></textarea>
+        <br>
+        <a class="button-def ui-shadow" id="submit-btn"  data-rel="back" data-ajax="false" href="#">Submit</a>
+    </div>
+
+
     <div data-role="panel" id="mypanel" data-display="overlay">
         <div data-position="fixed" class="sidebar">
             <div class="sidebar-head">
@@ -78,13 +151,16 @@
             </div>
         </div>
         <div style="padding: 5px">
-            <button id="play" onclick="vidplay()">&gt;</button>
-
             <video id="Video1" width="100%">
-                <source src="../app/video/ella.MOV" type="video/mp4" />
+                <source src="../assets/aboutus.mp4" type="video/mp4" />
             </video>
+            <button id="play" onclick="vidplay()">play</button>
         </div>
-
+        <div style="text-align: center">
+            <br>
+            <a href="#overlay" data-rel="popup" class="button-def ui-shadow">Rate this app</a>
+        </div>
+        <br>
     </div>
 
     <script>
@@ -93,10 +169,10 @@
             var button = document.getElementById("play");
             if (video.paused) {
                 video.play();
-                button.textContent = "||";
+                button.textContent = "pause";
             } else {
                 video.pause();
-                button.textContent = ">";
+                button.textContent = "play";
             }
         }
     </script>
